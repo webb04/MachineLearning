@@ -1,0 +1,55 @@
+#react-main-mount, #react-AlgorithmSelect-mount {
+	padding:5%;
+}
+
+#main-title {
+	text-align: center;
+}
+
+nav {
+	background-color: #26a69a !important;
+	text-align: center;
+}
+
+nav a {
+	font-size: 45px;
+	font-family: 'Yellowtail', cursive;
+	text-shadow: black 2px 2px;
+	word-spacing: .4em;
+}
+
+.errorMessage {
+	color: red;
+}
+
+.card.medium {
+  height: 400px;
+  width: 31%;
+	margin: 1%;
+	display: inline-block;
+}
+
+@media only screen and (min-width: 0px) {
+	.card.medium {
+		width: 98%;
+	}
+}
+
+@media screen and (min-width : 480px) {
+	.card.medium {
+		width: 48%;
+	}
+}
+
+@media screen and (min-width : 767px) {
+	.flex-container {
+	  display: -webkit-flex;
+	  display: flex;
+	  -webkit-justify-content: center;
+	  justify-content: center;
+	}
+}
+
+/*@media screen and (min-width : 1200px) {
+
+}*/
