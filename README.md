@@ -7,6 +7,7 @@ See full post on [ReactJS News](http://reactjsnews.com/isomorphic-javascript-wit
 
 Shared JavaScript that runs on both the client & server.
 
+####
 #### What's the point?
 JavaScript driven MVCs (angular, ember, backbone, etc.) render on DOM load, this can be really slowwwww & can make for a bad user experience.
 
