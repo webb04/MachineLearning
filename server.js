@@ -29,5 +29,5 @@ app.get('*', function(req, res) {
     });
 });
 
-app.listen(port);
+app.listen(process.env.PORT || port);
 console.log('Server is Up and Running at Port : ' + port);
