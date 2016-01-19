@@ -49,11 +49,13 @@ module.exports = function(app) {
 		var inputData = req.body.inputData;
 
 		var data = JSON.parse(inputData.toString().trim());
-		var submitHtml = React.renderToString(SubmitApp({}));
+		// var submitHtml = React.renderToString(SubmitApp({}));
 
 		switch (algorithm) {
 	    case '1':
-					res.render('submit.ejs', {reactOutput: submitHtml});
+					// res.render('submit.ejs', {reactOutput: submitHtml});
+					types = {};
+					res.render('result.ejs', {reactOutput: types});
 	        break;
 	    case '2':
 					types = kNearestNeighbours.run(data);
