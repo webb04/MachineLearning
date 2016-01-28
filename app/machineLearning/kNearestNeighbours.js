@@ -3,17 +3,25 @@ let kNearestNeighbours = {
     return "kNearestNeighbours!";
   },
   run: function(data, featureA, featureB) {
-    console.log(data);
+    // console.log(data);
     let nodes = new NodeList(3);
     for (let i in data) {
-      nodes.add(new Node(data[i]));
+      let newNode = {};
+      let array = [];
+      for (let key in data[i]) {
+        array.push(data[i][key]);
+      }
+      newNode.featureA = array[0];
+      newNode.featureB = array[1];
+      newNode.type = array[2];
+      nodes.add(new Node(newNode));
     }
     // let featureA = Math.round(Math.random() * 10);
     // let featureB = Math.round(Math.random() * 2000);
-
+    featureA = parseInt(featureA);
+    featureB = parseInt(featureB);
     nodes.add(new Node({featureA: featureA, featureB: featureB, type: false}));
 
-    console.log(nodes.determineUnkown());
     return nodes.determineUnkown();
     //nodes.draw("canvas");
   }
@@ -26,22 +34,22 @@ class Node {
     }
   }
 
-  measureDistances(area_range_obj, rooms_range_obj) {
-    let rooms_range = rooms_range_obj.max - rooms_range_obj.min;
-    let area_range = area_range_obj.max - area_range_obj.min;
+  measureDistances(featureA, featureB) {
+    let featureARange = featureA.max - featureA.min;
+    let featureBRange = featureB.max - featureB.min;
 
     for (let i in this.neighbours)
     {
         /* Just shortcut syntax */
         let neighbour = this.neighbours[i];
 
-        let delta_rooms = neighbour.featureB - this.featureB;
-        delta_rooms = (delta_rooms ) / rooms_range;
+        let delta_featureA = neighbour.featureA - this.featureA;
+        delta_featureA = (delta_featureA) / featureARange;
 
-        let delta_area  = neighbour.featureA  - this.featureA;
-        delta_area = (delta_area ) / area_range;
+        let delta_featureB  = neighbour.featureB  - this.featureB;
+        delta_featureB = (delta_featureB) / featureBRange;
 
-        neighbour.distance = Math.sqrt( delta_rooms*delta_rooms + delta_area*delta_area );
+        neighbour.distance = Math.sqrt( delta_featureA*delta_featureA + delta_featureB*delta_featureB );
     }
   }
 
@@ -103,6 +111,7 @@ class NodeList {
           }
           this.nodes[i].neighbours.push(new Node(this.nodes[j]));
         }
+
         this.nodes[i].measureDistances(this.featureA, this.featureB);
 
         this.nodes[i].sortByDistance();
@@ -116,17 +125,17 @@ class NodeList {
     this.featureA = {min: 1000000, max: 0};
     this.featureB = {min: 1000000, max: 0};
     for (let i in this.nodes) {
-      if (this.nodes[i].featureB < this.featureB.min) {
-        this.featureB.min = this.nodes[i].featureB;
-      }
-      if (this.nodes[i].featureB > this.featureB.max) {
-        this.featureB.max = this.nodes[i].featureB;
-      }
       if (this.nodes[i].featureA < this.featureA.min) {
         this.featureA.min = this.nodes[i].featureA;
       }
       if (this.nodes[i].featureA > this.featureA.max) {
         this.featureA.max = this.nodes[i].featureA;
+      }
+      if (this.nodes[i].featureB < this.featureB.min) {
+        this.featureB.min = this.nodes[i].featureB;
+      }
+      if (this.nodes[i].featureB > this.featureB.max) {
+        this.featureB.max = this.nodes[i].featureB;
       }
     }
   }

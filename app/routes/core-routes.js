@@ -60,8 +60,8 @@ module.exports = function(app) {
 					res.render('result.ejs', {reactOutput: types});
 	        break;
 	    case 'KNN':
+					console.log(featureA, featureB);
 					types = kNearestNeighbours.run(data, featureA, featureB);
-					console.log(types);
 					res.render('result.ejs', {reactOutput: types});
 	        break;
 		}

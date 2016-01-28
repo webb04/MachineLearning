@@ -71,11 +71,11 @@ var Form = React.createClass({
            </div>
            <div className="row">
              <div className="input-field col s6">
-               <input placeholder="" id="featureA" type="text" class="validate" onBlur={this.checkFeatureAEntered}/>
+               <input placeholder="" name="featureA" id="featureA" type="text" class="validate" onBlur={this.checkFeatureAEntered}/>
                <label for="first_name">Feature A</label>
              </div>
              <div className="input-field col s6">
-               <input placeholder="" id="featureB" type="text" class="validate" onBlur={this.checkFeatureBEntered}/>
+               <input placeholder="" name="featureB" type="text" id="featureB" class="validate" onBlur={this.checkFeatureBEntered}/>
                <label for="first_name">Feature B</label>
              </div>
            </div>
