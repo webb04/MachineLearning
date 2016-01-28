@@ -24,19 +24,19 @@ module.exports = function(app) {
 	app.get('/knn', function(req, res){
 		// React.renderToString takes your component
 		// and generates the markup
-		var reactHtml = React.renderToString(ReactApp({}));
+		var reactHtml = React.renderToString(ReactApp({algorithm: "KNN"}));
 		// Output html rendered by react
 		// console.log(myAppHtml);
-		res.render('form.ejs', {reactOutput: reactHtml});
+		res.render('KNN.ejs', {reactOutput: reactHtml});
 	});
 
 	app.get('/kmeans', function(req, res){
 		// React.renderToString takes your component
 		// and generates the markup
-		var reactHtml = React.renderToString(ReactApp({}));
+		var reactHtml = React.renderToString(ReactApp({algorithm: "KMEANS"}));
 		// Output html rendered by react
 		// console.log(myAppHtml);
-		res.render('form.ejs', {reactOutput: reactHtml});
+		res.render('KMEANS.ejs', {reactOutput: reactHtml});
 	});
 
 
@@ -45,20 +45,22 @@ module.exports = function(app) {
 	*/
 
 	app.post('/submit', function(req, res){
-		var algorithm = req.body.algorithm;
+		var algorithm = req.body.algorithm.toUpperCase();
 		var inputData = req.body.inputData;
+		var featureA = req.body.featureA;
+		var featureB = req.body.featureB;
 
 		var data = JSON.parse(inputData.toString().trim());
 		// var submitHtml = React.renderToString(SubmitApp({}));
 
 		switch (algorithm) {
-	    case '1':
+	    case 'KMEANS':
 					// res.render('submit.ejs', {reactOutput: submitHtml});
 					types = {};
 					res.render('result.ejs', {reactOutput: types});
 	        break;
-	    case '2':
-					types = kNearestNeighbours.run(data);
+	    case 'KNN':
+					types = kNearestNeighbours.run(data, featureA, featureB);
 					console.log(types);
 					res.render('result.ejs', {reactOutput: types});
 	        break;

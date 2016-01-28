@@ -6,7 +6,7 @@ var gulp       = require('gulp'),
 
 gulp.task('scripts', function () {
 
-    gulp.src(['app/main.js'])
+    gulp.src(['app/KNN.js'])
         .pipe(browserify({
             debug: true,
             transform: ['reactify', 'babelify']

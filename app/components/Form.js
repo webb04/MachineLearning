@@ -5,7 +5,6 @@ var React = require('react/addons');
 var Form = React.createClass({
     getInitialState: function() {
       return {
-        algorithmSelected: false,
         validJson: false,
         featureAPresent: false,
         featureBPresent: false,
@@ -45,25 +44,27 @@ var Form = React.createClass({
 
     },
     render: function() {
-        var selectAlgorithm = this.state.algorithmSelected ? '' : 'Please select an algorithm';
-        var text = this.state.validJson ? '' : 'Incorrect JSON';
+        var text = this.state.validJson ? '' : 'Please enter some data';
         var featureA = this.state.featureAPresent ? '' : 'Please enter a first feature';
         var featureB = this.state.featureBPresent ? '' : 'Please enter a second feature';
 
         return (
           <form action="/submit" method="post">
             <div className="row">
+
               <div className="input-field col s12">
-               <select name="algorithm">
-                 <option value="" disabled selected>Choose Algorithm</option>
-                 <option value="1">K Means Clustering</option>
-                 <option value="2">K Nearest Neighbours</option>
-               </select>
-               <label>Algorithm Select</label>
-             </div>
+                <h4 id="algorithmTitle">
+                  {this.props.algorithm}
+                </h4>
+                <h6 id="help">Help</h6>
+              </div>
+
            </div>
            <div className="row">
              <div className="input-field col s12">
+               <div className="hidden">
+                 <input placeholder="" type="text" value={this.props.algorithm} name="algorithm"/>
+               </div>
                <textarea id="textarea1" className="materialize-textarea" name="inputData" onBlur={this.checkJson}></textarea>
                <label for="textarea1">Training Data</label>
              </div>
@@ -80,7 +81,6 @@ var Form = React.createClass({
            </div>
 
            <div className="row">
-             <p className="errorMessage">{selectAlgorithm}</p>
              <p className="errorMessage">{text}</p>
              <p className="errorMessage">{featureA}</p>
              <p className="errorMessage">{featureB}</p>

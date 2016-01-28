@@ -2,16 +2,18 @@ let kNearestNeighbours = {
   information: function() {
     return "kNearestNeighbours!";
   },
-  run: function(data) {
+  run: function(data, featureA, featureB) {
     console.log(data);
     let nodes = new NodeList(3);
     for (let i in data) {
       nodes.add(new Node(data[i]));
     }
-    let featureA = Math.round(Math.random() * 10);
-    let featureB = Math.round(Math.random() * 2000);
+    // let featureA = Math.round(Math.random() * 10);
+    // let featureB = Math.round(Math.random() * 2000);
+
     nodes.add(new Node({featureA: featureA, featureB: featureB, type: false}));
 
+    console.log(nodes.determineUnkown());
     return nodes.determineUnkown();
     //nodes.draw("canvas");
   }

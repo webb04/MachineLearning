@@ -10,7 +10,9 @@ var ReactApp = React.createClass({
       },
       render: function () {
         return (
-          <Form />
+          <div>
+            <Form algorithm={this.props.algorithm}/>
+          </div>
         )
       }
   });

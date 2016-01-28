@@ -50,6 +50,57 @@ nav a {
 	}
 }
 
+#algorithmTitle {
+	color: #2A6FA0;
+	margin: 0px;
+}
+
+body {
+	transition: opacity .3s ease-out,-webkit-transform .3s ease-out;
+	transition: transform .3s ease-out,opacity .3s ease-out;
+	transition: transform .3s ease-out,opacity .3s ease-out,-webkit-transform .3s ease-out;
+	/*transform: scale(0.9);*/
+}
+
+#overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.9);
+	z-index: 5;
+	display: none;
+}
+
+#help {
+	color: #D1D1D1;
+	width: 50px;
+	-webkit-transition: color 0.5s, -webkit-transform 0.5s;
+  transition: color 0.5s, transform 0.5s;
+}
+
+#help:hover {
+	color: black;
+	-webkit-transition: color 0.5s, -webkit-transform 0.5s;
+  transition: color 0.5s, transform 0.5s;
+	cursor: pointer;
+}
+
+#close {
+	font-size: 48px;
+	position: fixed;
+	right: 30px;
+	top: 30px;
+	color: #b2b2b2;
+}
+
+#close:hover {
+	cursor: pointer;
+}
+
+.hidden {
+	display: none;
+}
+
 /*@media screen and (min-width : 1200px) {
 
 }*/
