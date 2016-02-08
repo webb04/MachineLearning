@@ -117,6 +117,11 @@ svg {
 	margin: auto;
 }
 
+a img {
+	width: 55px !important;
+	margin-top: 5px !important;
+}
+
 .tooltip {
   position: absolute;
   width: 200px;
