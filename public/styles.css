@@ -112,6 +112,11 @@ body {
   /*stroke: #000;*/
 }
 
+svg {
+	display: block;
+	margin: auto;
+}
+
 .tooltip {
   position: absolute;
   width: 200px;
