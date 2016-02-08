@@ -101,6 +101,30 @@ body {
 	display: none;
 }
 
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.dot {
+  /*stroke: #000;*/
+}
+
+.tooltip {
+  position: absolute;
+  width: 200px;
+  height: 28px;
+  pointer-events: none;
+}
+
+#visualisation {
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
 /*@media screen and (min-width : 1200px) {
 
 }*/

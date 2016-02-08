@@ -49,20 +49,32 @@ module.exports = function(app) {
 		var inputData = req.body.inputData;
 		var featureA = req.body.featureA;
 		var featureB = req.body.featureB;
+		var featureALabel;
+		var featureBLabel;
 
 		var data = JSON.parse(inputData.toString().trim());
 		// var submitHtml = React.renderToString(SubmitApp({}));
+		var i = 0;
+		for (item in data[0]) {
+			if (i == 0) featureALabel = item;
+			if (i == 1) featureBLabel = item;
+			i++;
+		}
+		console.log(featureALabel);
+		console.log(featureBLabel);
 
 		switch (algorithm) {
 	    case 'KMEANS':
 					// res.render('submit.ejs', {reactOutput: submitHtml});
 					types = {};
-					res.render('result.ejs', {reactOutput: types});
+					res.render('d3kmeans.ejs', {reactOutput: types});
 	        break;
 	    case 'KNN':
 					console.log(featureA, featureB);
 					types = kNearestNeighbours.run(data, featureA, featureB);
-					res.render('result.ejs', {reactOutput: types});
+					res.render('d3knn.ejs', {reactOutput: types, data: req.body.inputData,
+					featureA: featureA, featureB: featureB, featureALabel: featureALabel,
+					featureBLabel: featureBLabel});
 	        break;
 		}
 	});
