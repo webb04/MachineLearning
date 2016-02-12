@@ -1,5 +1,3 @@
-// server.js
-
 var express = require('express'),
 path = require('path'),
 app = express(),
@@ -13,11 +11,12 @@ require('node-jsx').install();
 app.use(express.static(path.join(__dirname, 'public')));
 // Set view path
 app.set('views', path.join(__dirname, 'views'));
-// set up ejs for templating. You can use whatever
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+// support json encoded bodies
+app.use(bodyParser.json());
+// support encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up Routes for the application
 require('./app/routes/core-routes.js')(app);

@@ -17,5 +17,5 @@ var ReactApp = React.createClass({
       }
   });
 
-/* Module.exports instead of normal dom mounting */
+/* Module.exports instead of normal DOM mounting */
 module.exports = ReactApp;

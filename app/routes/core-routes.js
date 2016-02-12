@@ -11,7 +11,6 @@ module.exports = function(app) {
     // and generates the markup
 		var reactHtml = React.renderToString(AlgorithmSelect({}));
     // Output html rendered by react
-		// console.log(myAppHtml);
     res.render('index.ejs', {AlgorithmSelect: reactHtml});
 	});
 
@@ -35,7 +34,6 @@ module.exports = function(app) {
 		// and generates the markup
 		var reactHtml = React.renderToString(ReactApp({algorithm: "KMEANS"}));
 		// Output html rendered by react
-		// console.log(myAppHtml);
 		res.render('KMEANS.ejs', {reactOutput: reactHtml});
 	});
 
@@ -53,19 +51,15 @@ module.exports = function(app) {
 		var featureBLabel;
 
 		var data = JSON.parse(inputData.toString().trim());
-		// var submitHtml = React.renderToString(SubmitApp({}));
 		var i = 0;
 		for (item in data[0]) {
 			if (i == 0) featureALabel = item;
 			if (i == 1) featureBLabel = item;
 			i++;
 		}
-		console.log(featureALabel);
-		console.log(featureBLabel);
 
 		switch (algorithm) {
 	    case 'KMEANS':
-					// res.render('submit.ejs', {reactOutput: submitHtml});
 					types = {};
 					res.render('d3kmeans.ejs', {reactOutput: types});
 	        break;
@@ -78,9 +72,4 @@ module.exports = function(app) {
 	        break;
 		}
 	});
-
-
-
-
-
 };
