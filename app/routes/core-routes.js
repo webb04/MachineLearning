@@ -25,7 +25,6 @@ module.exports = function(app) {
 		// and generates the markup
 		var reactHtml = React.renderToString(ReactApp({algorithm: "KNN"}));
 		// Output html rendered by react
-		// console.log(myAppHtml);
 		res.render('KNN.ejs', {reactOutput: reactHtml});
 	});
 
@@ -35,6 +34,14 @@ module.exports = function(app) {
 		var reactHtml = React.renderToString(ReactApp({algorithm: "KMEANS"}));
 		// Output html rendered by react
 		res.render('KMEANS.ejs', {reactOutput: reactHtml});
+	});
+
+	app.get('/regression', function(req, res){
+		// React.renderToString takes your component
+		// and generates the markup
+		var reactHtml = React.renderToString(ReactApp({algorithm: "OLS"}));
+		// Output html rendered by react
+		res.render('OLS.ejs', {reactOutput: reactHtml});
 	});
 
 
