@@ -22,6 +22,61 @@ nav a {
 	color: red;
 }
 
+.row.shiftRight {
+	margin-left: 11.250px;
+}
+
+.errorContainer {
+		margin-top: 50px;
+}
+
+.seoForm {
+	display: none;
+}
+
+.loader {
+	text-align: center !important;
+	margin-top: 100px !important;
+}
+
+.loaderContainer {
+	text-align: center !important;
+	width: 100%;
+}
+
+.statusTracker {
+	display: inline-block;
+	text-align: center !important;
+	width: 100%;
+	margin-top: 50px;
+}
+
+.progress.updated {
+	position: relative;
+	height: 4px;
+	display: block;
+	width: 100%;
+	background-color: rgba(234, 234, 234, 0.6);
+	border-radius: 2px;
+	margin: 0.5rem 0 1rem 0;
+	overflow: hidden;
+	width: 40%;
+	margin: auto;
+	margin-top: 10px;
+}
+
+.statusTracker h6 {
+	display: inline;
+	font-size: 20px;
+	text-align: center !important;
+	font-weight: 300;
+	padding: 50px;
+}
+
+.unselected {
+	opacity: 0.4;
+}
+
 .card.medium {
   height: 400px;
   width: 31%;
@@ -33,11 +88,17 @@ nav a {
 	.card.medium {
 		width: 98%;
 	}
+	.statusTracker {
+		display: none;
+	}
 }
 
 @media screen and (min-width : 480px) {
 	.card.medium {
 		width: 48%;
+	}
+	.statusTracker {
+		display: : none;
 	}
 }
 
@@ -48,7 +109,18 @@ nav a {
 	  -webkit-justify-content: center;
 	  justify-content: center;
 	}
+	.statusTracker {
+		display: inline-block;
+	}
 }
+
+.spinner-blue, .spinner-blue-only {
+	border-color: #2A6FA0 !important;
+}
+
+/*.determine.select {
+	width: 33%;
+}*/
 
 #algorithmTitle {
 	color: #2A6FA0;
@@ -118,8 +190,8 @@ svg {
 }
 
 a img {
-	width: 55px !important;
-	margin-top: 5px !important;
+	width: 50px !important;
+	margin-top: 8px !important;
 }
 
 .tooltip {

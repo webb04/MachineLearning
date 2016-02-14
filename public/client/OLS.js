@@ -25,7 +25,8 @@ var Form = React.createClass({
     try {
       JSON.parse(data);
       this.setState({validJson : true});
-      if ((this.state.featureBPresent == true) && (this.state.featureAPresent == true)) this.setState({showSubmitButton : true});
+      // if ((this.state.featureBPresent == true) && (this.state.featureAPresent == true))this.setState({showSubmitButton : true});
+      this.setState({showSubmitButton : true});
     } catch (e) {
       this.setState({validJson : false, showSubmitButton: false});
       this.setState({showSubmitButton : false});
@@ -78,24 +79,12 @@ var Form = React.createClass({
              <label for="textarea1">Training Data</label>
            </div>
          </div>
-         <div className="row">
-           <div className="input-field col s6">
-             <input placeholder="" name="featureA" id="featureA" type="text" class="validate" onBlur={this.checkFeatureAEntered}/>
-             <label for="first_name">Feature A</label>
-           </div>
-           <div className="input-field col s6">
-             <input placeholder="" name="featureB" type="text" id="featureB" class="validate" onBlur={this.checkFeatureBEntered}/>
-             <label for="first_name">Feature B</label>
-           </div>
-         </div>
 
-         <div className="row">
+         <div className="row shiftRight errorContainer">
            <p className="errorMessage">{text}</p>
-           <p className="errorMessage">{featureA}</p>
-           <p className="errorMessage">{featureB}</p>
          </div>
 
-         <div className="row">
+         <div className="row shiftRight">
            { this.state.showSubmitButton ? <input className="btn waves-effect waves-light" type="submit" value="Submit"/> : null }
          </div>
         </form>
@@ -104,6 +93,6 @@ var Form = React.createClass({
 });
 
 ReactDOM.render(
-  <ReactApp algorithm="KMEANS" />,
+  <ReactApp algorithm="OLS" />,
   document.getElementById('react-main-mount')
 );

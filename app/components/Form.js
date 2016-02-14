@@ -49,48 +49,62 @@ var Form = React.createClass({
         var featureB = this.state.featureBPresent ? '' : 'Please enter a second feature';
 
         return (
-          <form action="/submit" method="post">
-            <div className="row">
-
-              <div className="input-field col s12">
-                <h4 id="algorithmTitle">
-                  {this.props.algorithm}
-                </h4>
-                <h6 id="help">Help</h6>
-              </div>
-
-           </div>
-           <div className="row">
-             <div className="input-field col s12">
-               <div className="hidden">
-                 <input placeholder="" type="text" value={this.props.algorithm} name="algorithm"/>
+          <div className="loaderContainer">
+            <div className="preloader-wrapper big active loader">
+             <div className="spinner-layer spinner-blue-only">
+               <div className="circle-clipper left">
+                 <div className="circle"></div>
+               </div><div className="gap-patch">
+                 <div className="circle"></div>
+               </div><div className="circle-clipper right">
+                 <div className="circle"></div>
                </div>
-               <textarea id="textarea1" className="materialize-textarea" name="inputData" onBlur={this.checkJson}></textarea>
-               <label for="textarea1">Training Data</label>
-             </div>
-           </div>
-           <div className="row">
-             <div className="input-field col s6">
-               <input placeholder="" name="featureA" id="featureA" type="text" class="validate" onBlur={this.checkFeatureAEntered}/>
-               <label for="first_name">Feature A</label>
-             </div>
-             <div className="input-field col s6">
-               <input placeholder="" name="featureB" type="text" id="featureB" class="validate" onBlur={this.checkFeatureBEntered}/>
-               <label for="first_name">Feature B</label>
              </div>
            </div>
 
-           <div className="row">
-             <p className="errorMessage">{text}</p>
-             <p className="errorMessage">{featureA}</p>
-             <p className="errorMessage">{featureB}</p>
-           </div>
+            <form action="/submit" method="post" className="seoForm">
+              <div className="row">
+
+                <div className="input-field col s12">
+                  <h4 id="algorithmTitle">
+                    {this.props.algorithm}
+                  </h4>
+                  <h6 id="help">Help</h6>
+                </div>
+
+             </div>
+             <div className="row">
+               <div className="input-field col s12">
+                 <div className="hidden">
+                   <input placeholder="" type="text" value={this.props.algorithm} name="algorithm"/>
+                 </div>
+                 <textarea id="textarea1" className="materialize-textarea" name="inputData" onBlur={this.checkJson}></textarea>
+                 <label for="textarea1">Training Data</label>
+               </div>
+             </div>
+             <div className="row">
+               <div className="input-field col s6">
+                 <input placeholder="" name="featureA" id="featureA" type="text" class="validate" onBlur={this.checkFeatureAEntered}/>
+                 <label for="first_name">Feature A</label>
+               </div>
+               <div className="input-field col s6">
+                 <input placeholder="" name="featureB" type="text" id="featureB" class="validate" onBlur={this.checkFeatureBEntered}/>
+                 <label for="first_name">Feature B</label>
+               </div>
+             </div>
+
+             <div className="row shiftRight errorContainer">
+               <p className="errorMessage">{text}</p>
+               <p className="errorMessage">{featureA}</p>
+               <p className="errorMessage">{featureB}</p>
+             </div>
 
 
-           <div className="row">
-             { this.state.showSubmitButton ? <input className="btn waves-effect waves-light" type="submit" value="Submit"/> : null }
-           </div>
-          </form>
+             <div className="row shiftRight">
+               { this.state.showSubmitButton ? <input className="btn waves-effect waves-light" type="submit" value="Submit"/> : null }
+             </div>
+            </form>
+          </div>
         );
       }
 

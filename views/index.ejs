@@ -1,4 +1,14 @@
 <% include nav.ejs %>
+
+<div class="statusTracker">
+  <h6>1. Select</h6>
+  <h6 class="unselected">2. Train</h6>
+  <h6 class="unselected">3. Predict</h6>
+</div>
+<div class="progress updated">
+  <div class="determinate select" style="width: 33.333333333333333%"></div>
+</div>
+
     <div id="react-AlgorithmSelect-mount">
       <%- AlgorithmSelect %>
     </div>

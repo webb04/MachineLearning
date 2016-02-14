@@ -30,13 +30,15 @@ var AlgorithmSelect = React.createClass({
         "description": "",
         "tags": []
       }];
-    return (<div className="flex-container">
-      {
-        algorithms.map(function(algorithm) {
-          return (<Card algorithm={algorithm} />)
-        })
-      }
-    </div>)
+    return (
+        <div className="flex-container">
+          {
+            algorithms.map(function(algorithm) {
+              return (<Card algorithm={algorithm} />)
+            })
+          }
+        </div>
+    )
   }
 });
 

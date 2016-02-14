@@ -6,12 +6,12 @@ var gulp       = require('gulp'),
 
 gulp.task('scripts', function () {
 
-    gulp.src(['app/KNN.js'])
-        .pipe(browserify({
-            debug: true,
-            transform: ['reactify', 'babelify']
-        }))
-        .pipe(gulp.dest('./public/'));
+    // gulp.src(['app/KNN.js'])
+    //     .pipe(browserify({
+    //         debug: true,
+    //         transform: ['reactify', 'babelify']
+    //     }))
+    //     .pipe(gulp.dest('./public/'));
 
     gulp.src(['app/submit.js'])
         .pipe(browserify({
