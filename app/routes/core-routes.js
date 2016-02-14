@@ -25,7 +25,7 @@ module.exports = function(app) {
 		// and generates the markup
 		var reactHtml = React.renderToString(ReactApp({algorithm: "KNN"}));
 		// Output html rendered by react
-		res.render('KNN.ejs');
+		res.render('KNN.ejs', {reactOutput: reactHtml});
 	});
 
 	app.get('/kmeans', function(req, res){
