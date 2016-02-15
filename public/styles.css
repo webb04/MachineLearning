@@ -69,12 +69,13 @@ nav a {
 	display: inline;
 	font-size: 20px;
 	text-align: center !important;
-	font-weight: 300;
+	font-weight: 400;
 	padding: 50px;
 }
 
 .unselected {
-	opacity: 0.4;
+	opacity: 0.3 !important;
+	font-weight: 300 !important;
 }
 
 .card.medium {

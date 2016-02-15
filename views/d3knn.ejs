@@ -1,13 +1,15 @@
 <% include nav.ejs %>
+<div class="statusTracker">
+  <h6 class="unselected">1. Select</h6>
+  <h6 class="unselected">2. Train</h6>
+  <h6>3. Predict</h6>
+</div>
+<div class="progress updated">
+  <div class="determinate select" style="width: 100%"></div>
+</div>
+
 <script src="http://d3js.org/d3.v3.min.js"></script>
     <div id="react-main-mount">
-      <!-- <%- JSON.stringify(types) %>
-      <br />
-      <%- data %>
-      <br />
-      <%- JSON.stringify(featureA) %>
-      <br />
-      <%- JSON.stringify(featureB) %> -->
     </div>
     <div id="visualisation"></div>
     <script>

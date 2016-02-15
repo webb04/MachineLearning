@@ -30,6 +30,16 @@ var Form = React.createClass({
       this.setState({validJson : false, showSubmitButton: false});
       this.setState({showSubmitButton : false});
     }
+    var features = [];
+    var parsedData = JSON.parse(data);
+    parsedData = parsedData[0];
+    for (var key in parsedData) {
+      features.push(key);
+    }
+    var newFeatureA = features[0];
+    var newFeatureB = features[1];
+    $('#first_feature').text(newFeatureA);
+    $('#second_feature').text(newFeatureB);
   },
   checkFeatureAEntered: function() {
     var data = $("#featureA").val();
@@ -81,11 +91,11 @@ var Form = React.createClass({
          <div className="row">
            <div className="input-field col s6">
              <input placeholder="" name="featureA" id="featureA" type="text" class="validate" onBlur={this.checkFeatureAEntered}/>
-             <label for="first_name">Feature A</label>
+             <label id="first_feature" for="first_name">Feature A</label>
            </div>
            <div className="input-field col s6">
              <input placeholder="" name="featureB" type="text" id="featureB" class="validate" onBlur={this.checkFeatureBEntered}/>
-             <label for="first_name">Feature B</label>
+             <label id="second_feature" for="first_name">Feature B</label>
            </div>
          </div>
 
