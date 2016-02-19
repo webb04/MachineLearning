@@ -1,7 +1,4 @@
 var ReactApp = React.createClass({
-      componentDidMount: function () {
-        console.log("Mounted!");
-      },
       render: function () {
         return (
           <div>

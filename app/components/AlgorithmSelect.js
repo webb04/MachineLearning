@@ -4,9 +4,6 @@ var React = require('react/addons');
 var Card = React.createFactory(require('./Card'));
 
 var AlgorithmSelect = React.createClass({
-  componentDidMount: function () {
-    console.log("Mounted!");
-  },
   render: function () {
     var algorithms = [
       {

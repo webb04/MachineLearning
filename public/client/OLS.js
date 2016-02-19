@@ -1,6 +1,9 @@
 var ReactApp = React.createClass({
-      componentDidMount: function () {
-        console.log("Mounted!");
+      componentDidMount: function() {
+        $(document).ready(function() {
+          $('select').material_select();
+          $('.modal-trigger').leanModal();
+        });
       },
       render: function () {
         return (
@@ -59,23 +62,33 @@ var Form = React.createClass({
       var featureB = this.state.featureBPresent ? '' : 'Please enter a second feature';
 
       return (
-        <form action="/submit" method="post">
+        <div>
           <div className="row">
-
             <div className="input-field col s12">
               <h4 id="algorithmTitle">
                 {this.props.algorithm}
+                <span>
+                  <a id="help" className="modal-trigger" data-target="helpModal"><i className="small material-icons">info_outline</i></a>
+                </span>
               </h4>
-              <h6 id="help">Help</h6>
             </div>
-
          </div>
+        <form action="/submit" method="post">
+
          <div className="row">
+
+           <div className="row">
+             <div className="input-field col s12">
+               <input placeholder="" name="title" id="title" type="text" class="validate" />
+               <label id="title"  for="Title">Title</label>
+             </div>
+           </div>
+
            <div className="input-field col s12">
              <div className="hidden">
                <input placeholder="" type="text" value={this.props.algorithm} name="algorithm"/>
              </div>
-             <textarea id="textarea1" className="materialize-textarea" name="inputData" onBlur={this.checkJson}></textarea>
+             <textarea id="textarea1" placeholder="" className="materialize-textarea" name="inputData" onBlur={this.checkJson}></textarea>
              <label for="textarea1">Training Data</label>
            </div>
          </div>
@@ -85,9 +98,10 @@ var Form = React.createClass({
          </div>
 
          <div className="row shiftRight">
-           { this.state.showSubmitButton ? <input className="btn waves-effect waves-light" type="submit" value="Submit"/> : null }
+           { this.state.showSubmitButton ? <input className="btn waves-effect waves-light" type="submit" value="Submit"/> : <a className="btn waves-effect waves-light disabled">Submit</a> }
          </div>
         </form>
+      </div>
       );
     }
 });

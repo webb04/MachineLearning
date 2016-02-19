@@ -22,6 +22,14 @@ nav a {
 	color: red;
 }
 
+#algorithmTitle span {
+	margin-left: 10px;
+}
+
+#algorithmTitle {
+	margin-left: -10.875px !important;
+}
+
 .row.shiftRight {
 	margin-left: 11.250px;
 }

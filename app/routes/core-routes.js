@@ -71,12 +71,15 @@ module.exports = function(app) {
 					res.render('d3kmeans.ejs', {reactOutput: types});
 	        break;
 	    case 'KNN':
-					console.log(featureA, featureB);
 					types = kNearestNeighbours.run(data, featureA, featureB);
 					res.render('d3knn.ejs', {reactOutput: types, data: req.body.inputData,
 					featureA: featureA, featureB: featureB, featureALabel: featureALabel,
 					featureBLabel: featureBLabel});
 	        break;
+			case 'OLS':
+					// types = Regression.run(data);
+					res.render('d3regression.ejs', {reactOutput: "test", title: req.body.title});
+					break;
 		}
 	});
 };

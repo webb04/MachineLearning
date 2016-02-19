@@ -1,9 +1,16 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<title>Plotting a Trendline with D3.js</title>
+<% include nav.ejs %>
+<div class="statusTracker">
+  <h6 class="unselected">1. Select</h6>
+  <h6 class="unselected">2. Train</h6>
+  <h6>3. Predict</h6>
+</div>
+<div class="progress updated">
+  <div class="determinate select" style="width: 100%"></div>
+</div>
+
 <style>
 	.line {
-		stroke: blue;
+		stroke: #2A6FA0;
 		fill:none;
 		stroke-width: 3;
 	}
@@ -14,6 +21,10 @@
 		stroke: black;
 		shape-rendering: crispEdges;
 	}
+
+  .trendline {
+    stroke: rgb(255, 127, 14) !important;
+  }
 
 	.axis text {
 		font-size: 10px;
@@ -28,18 +39,33 @@
 </style>
 
 <body>
+	<div id="react-main-mount">
+	</div>
+	<div id="visualisation"></div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 
 <script>
-	var height = 300;
-	var width = 600;
-	var margin = {top: 20, right:20, bottom: 50, left: 20};
+	// var height = 500;
+	// var width = 960;
+  // var margin = {top: 20, right: 20, bottom: 30, left: 60};
+  // var margin = {top: 0, right: 0, bottom: 0, left: 0};
+	// var margin = {top: 20, right:20, bottom: 50, left: 20};
+
+  var title = <%- JSON.stringify(title) %>
+
+
+
+
+  var margin = {top: 20, right: 20, bottom: 30, left: 60},
+      width = 960 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+
 
 	// formatters for axis and labels
 	var currencyFormat = d3.format("$0.2f");
 	var decimalFormat = d3.format("0.2f");
 
-	var svg = d3.select("body")
+	var svg = d3.select("#visualisation")
 		.append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
@@ -105,7 +131,7 @@
 			.attr("text-anchor", "middle")
 			.style("font-size", "16px")
 			.style("font-family", "sans-serif")
-			.text("USD/EURO Exhange Rate");
+			.text(title);
 
 		// x axis label
 		svg.append("text")
