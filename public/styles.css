@@ -1,5 +1,30 @@
+/*#react-main-mount {
+	padding-left:5%;
+	padding-right:5%;
+	padding-bottom:5%;
+	padding-top: 1%;
+}*/
+
 #react-main-mount, #react-AlgorithmSelect-mount {
-	padding:5%;
+	padding: 5%;
+}
+
+#OLS-mount {
+	padding-left:5%;
+	padding-right:5%;
+	padding-bottom:5%;
+	padding-top: 1%;
+}
+
+#model-title {
+	text-align: center;
+	padding-top: 4%;
+	color: #2A6FA0;
+  font-weight: 300;
+}
+
+.OLS-mount {
+	padding-top: 2% !important;
 }
 
 #main-title {

@@ -78,7 +78,22 @@ module.exports = function(app) {
 	        break;
 			case 'OLS':
 					// types = Regression.run(data);
-					res.render('d3regression.ejs', {reactOutput: "test", title: req.body.title});
+					// split X and y into arrays of values
+					var X = [];
+					var y = [];
+
+					// for (item in req.body.inputData) {
+					// 	console.log(item);
+					// 	for (prop in req.body.inputData[item]) {
+					// 		if (i == 0) X.push(req.body.inputData[item].prop);
+					// 		if (i == 1) y.push(req.body.inputData[item].prop);
+					// 		i++;
+					// 	}
+					// }
+
+					res.render('d3regression.ejs', {reactOutput: "test", title: req.body.title,
+					data: req.body.inputData, X: X, y: y, featureALabel: featureALabel,
+					featureBLabel: featureBLabel});
 					break;
 		}
 	});
