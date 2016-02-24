@@ -18,9 +18,27 @@
 
 #model-title {
 	text-align: center;
-	padding-top: 4%;
+	/*padding-top: 4%;*/
 	color: #2A6FA0;
   font-weight: 300;
+}
+
+.ols-predict-panel {
+	width: 960px;
+	margin: auto !important;
+	margin-top: 50px !important;
+	margin-bottom: 30px !important;
+}
+
+.ols-inner-container {
+	width: 15%;
+	margin: auto;
+}
+
+.ols-prediction {
+	text-align: center;
+	font-size: 32px;
+	font-weight: 300;
 }
 
 .OLS-mount {

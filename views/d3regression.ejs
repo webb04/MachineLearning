@@ -1,15 +1,29 @@
 <% include nav.ejs %>
-<div class="statusTracker">
+<!-- <div class="statusTracker">
   <h6 class="unselected">1. Select</h6>
   <h6 class="unselected">2. Train</h6>
   <h6>3. Predict</h6>
 </div>
 <div class="progress updated">
   <div class="determinate select" style="width: 100%"></div>
-</div>
+</div> -->
 
-<div>
+<!-- <div>
   <h5 id="model-title"><%- title %></h5>
+</div> -->
+<style>
+  input {
+    text-align: center;
+  }
+</style>
+<div class="card-panel ols-predict-panel">
+  <h5 id="model-title" class="ols-title"><%- title %></h5>
+  <div class="ols-inner-container">
+    <div style="text-align: center;">
+      <input type="text" placeholder="Cache" id="x-value">
+    </div>
+    <div class="ols-prediction" id="y-value">0</div>
+  </div>
 </div>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -149,7 +163,6 @@
       // maybe this should be lowest?
   		var x1 = xLabels[0]; // CORRECT
   		var y1 = leastSquaresCoeff[0] + leastSquaresCoeff[1];
-      var y8 = leastSquaresCoeff[0] + leastSquaresCoeff[1];
   		var x2 = xLabels[xLabels.length - 1];
       var x2 = 880;
       var arr = xSeries;
@@ -275,7 +288,6 @@
     //
     //   return [slope, intercept, rSquare];
     // }
-
     </script>
 
 	<!-- comment out main.js to see server side only rendering -->
@@ -287,6 +299,15 @@
     $(document).ready(function() {
       $('select').material_select();
       $('#react-main-mount').css('padding', '0%');
+    });
+    var inputX = 0;
+    $("#x-value").keyup(function() {
+      inputX = $("#x-value").val();
+      outputY = leastSquaresCoeff[1] + (leastSquaresCoeff[0] * inputX);
+      outputY = outputY.toFixed(2);
+      console.log(inputX);
+      console.log(outputY);
+      $('#y-value').text(outputY);
     });
   </script>
 
