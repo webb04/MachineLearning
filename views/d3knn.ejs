@@ -14,6 +14,7 @@
     <div id="visualisation"></div>
     <script>
       var nearestNeighbours = <%- JSON.stringify(types) %>
+      console.log(nearestNeighbours);
       var greatest = 0;
       var type;
       for (item in nearestNeighbours) {

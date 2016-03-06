@@ -67,8 +67,11 @@ module.exports = function(app) {
 
 		switch (algorithm) {
 	    case 'KMEANS':
-					types = {};
-					res.render('d3kmeans.ejs', {reactOutput: types});
+					var targets = [];
+					targets = kMeansClustering.setup(data, featureA, featureB, featureALabel, featureBLabel);
+					res.render('d3kmeans.ejs', {targets: targets, data: req.body.inputData,
+					featureA: featureA, featureB: featureB, featureALabel: featureALabel,
+					featureBLabel: featureBLabel});
 	        break;
 	    case 'KNN':
 					types = kNearestNeighbours.run(data, featureA, featureB);
