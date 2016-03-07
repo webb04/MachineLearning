@@ -78,17 +78,17 @@ var Form = React.createClass({
                  <div className="hidden">
                    <input placeholder="" type="text" value={this.props.algorithm} name="algorithm"/>
                  </div>
-                 <textarea id="textarea1" className="materialize-textarea" name="inputData" onBlur={this.checkJson}></textarea>
+                 <textarea id="textarea1" className="materialize-textarea" name="inputData" onkeyup={this.checkJson}></textarea>
                  <label for="textarea1">Training Data</label>
                </div>
              </div>
              <div className="row">
                <div className="input-field col s6">
-                 <input placeholder="" name="featureA" id="featureA" type="text" class="validate" onBlur={this.checkFeatureAEntered}/>
+                 <input placeholder="" name="featureA" id="featureA" type="text" class="validate" onkeyup={this.checkFeatureAEntered}/>
                  <label for="first_name">Feature A</label>
                </div>
                <div className="input-field col s6">
-                 <input placeholder="" name="featureB" type="text" id="featureB" class="validate" onBlur={this.checkFeatureBEntered}/>
+                 <input placeholder="" name="featureB" type="text" id="featureB" class="validate" onkeyup={this.checkFeatureBEntered}/>
                  <label for="first_name">Feature B</label>
                </div>
              </div>

@@ -7,6 +7,7 @@
     "ejs": "~0.8.5",
     "express": "~4.0.0",
     "griddle-react": "^0.1.19",
+    "nightwatch": "^0.8.16",
     "node-jsx": "~0.2.0",
     "path": "*",
     "react": "^0.14.7"
