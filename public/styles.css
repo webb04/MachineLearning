@@ -20,11 +20,27 @@ src:url("Fonts/56be84de-9d60-4089-8df0-0ea6ec786b84.eot?#iefix") format("eot"),u
 
 html, body {
   /*font-family: 'HelveticaNeueW01-Thin' !important;*/
-	font-family:'HelveticaNeueW01-Thin' !important;
+	/*font-family:'HelveticaNeueW01-Thin' !important;*/
+	font-family: 'Roboto' !important;
+	background: #fafafa;
 }
 
-#react-main-mount, #react-AlgorithmSelect-mount {
+/*#react-main-mount, #react-AlgorithmSelect-mount {
 	padding: 5%;
+}*/
+
+#react-main-mount, #react-AlgorithmSelect-mount {
+	padding: 3%;
+}
+.card-panel {
+	padding: 10px;
+	box-shadow: none !important;
+	border: solid 1px #edeeee;
+	border-bottom: solid 3px #edeeee;
+}
+
+.popupimg {
+		width: 100%;
 }
 
 #OLS-mount {
@@ -152,6 +168,25 @@ nav a {
   width: 31%;
 	margin: 1%;
 	display: inline-block;
+	box-shadow: none !important;
+	border: solid 1px #edeeee;
+	border-bottom: solid 3px #edeeee;
+}
+
+.algorithmType {
+	bottom: 0px;
+	position: absolute;
+	/* text-align: center; */
+	width: 100%;
+	/*background: rgba(240, 240, 240, 0.6);*/
+	color: black;
+	padding: 10px;
+	margin-bottom: 0px;
+	padding-left: 20px;
+}
+
+nav {
+	box-shadow: none !important;
 }
 
 @media only screen and (min-width: 0px) {

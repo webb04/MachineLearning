@@ -36,7 +36,6 @@ class Node {
 
     for (let i in this.neighbours)
     {
-        /* Just shortcut syntax */
         let neighbour = this.neighbours[i];
 
         let delta_featureA = neighbour.featureA - this.featureA;

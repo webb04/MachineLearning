@@ -1,5 +1,4 @@
 <% include nav.ejs %>
-
 <div class="statusTracker">
   <h6 class="unselected">1. Select</h6>
   <h6>2. Train</h6>
@@ -9,33 +8,31 @@
   <div class="determinate select" style="width: 66.666666666666666%"></div>
 </div>
 
-    <div id="react-main-mount">
-      <%- reactOutput %>
-    </div>
+<div id="react-main-mount">
+  <%- reactOutput %>
+</div>
 
-    <div id="helpModal" class="modal">
-      <div class="modal-content">
-        <h4>Ordinary Least Squares</h4>
-        <p>A bunch of text</p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves btn-flat">Agree</a>
-      </div>
-    </div>
+<div id="helpModal" class="modal">
+  <div class="modal-content">
+    <h4>Ordinary Least Squares</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves btn-flat">Agree</a>
+  </div>
+</div>
 
-	<!-- comment out main.js to see server side only rendering -->
-  <script src="build/react.js"></script>
-  <script src="build/react-dom.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-	<script type="text/babel" src="client/KMEANS.js"></script>
-  <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('select').material_select();
-    });
-  </script>
+<script src="build/react.js"></script>
+<script src="build/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<script type="text/babel" src="client/KMEANS.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
 
 </body>
 </html>

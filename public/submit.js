@@ -6,10 +6,6 @@ var React = require('react/addons');
 
 var mountNode = document.getElementById('react-main-mount');
 
-var numbers = [1, 2, 3, 4, 5];
-var timesTwo = numbers.map(number => number * 2);
-console.log(timesTwo);
-
 // Overwrite server side generated front end
 React.render(new submitApp({}), mountNode);
 
@@ -82,17 +78,6 @@ process.chdir = function (dir) {
 module.exports = require('./lib/ReactWithAddons');
 
 },{"./lib/ReactWithAddons":94}],4:[function(require,module,exports){
-/**
- * Copyright 2013-2014, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule AutoFocusMixin
- * @typechecks static-only
- */
 
 "use strict";
 
@@ -109,17 +94,6 @@ var AutoFocusMixin = {
 module.exports = AutoFocusMixin;
 
 },{"./focusNode":128}],5:[function(require,module,exports){
-/**
- * Copyright 2013 Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule BeforeInputEventPlugin
- * @typechecks static-only
- */
 
 "use strict";
 

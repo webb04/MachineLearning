@@ -10,6 +10,8 @@ var AlgorithmSelect = React.createClass({
         "name":"K-Nearest Neighbours",
         "link":"knn",
         "image":"knn.png",
+        "popupimg": "classify.png",
+        "type": "Classification",
         "description" : "",
         "tags": []
       },
@@ -17,6 +19,8 @@ var AlgorithmSelect = React.createClass({
         "name":"K-Means Clustering",
         "link":"kmeans",
         "image": "cluster.png",
+        "popupimg": "clustering.png",
+        "type": "Clustering",
         "description": "",
         "tags": []
       },
@@ -24,6 +28,8 @@ var AlgorithmSelect = React.createClass({
         "name":"Linear Regression",
         "link":"regression",
         "image": "regression.png",
+        "popupimg": "regress.png",
+        "type": "Regression",
         "description": "",
         "tags": []
       }];
