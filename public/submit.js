@@ -15884,8 +15884,8 @@ var eventTypes = {
   },
   keyUp: {
     phasedRegistrationNames: {
-      bubbled: keyOf({onkeyup: true}),
-      captured: keyOf({onkeyupCapture: true})
+      bubbled: keyOf({onKeyUp: true}),
+      captured: keyOf({onKeyUpCapture: true})
     }
   },
   load: {
