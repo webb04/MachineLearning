@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="2"
+            failures="1"
+            tests="2">
+
+  <testsuite name="knnTest"
+    errors="2" failures="1" hostname="" id="" package="knnTest" skipped="0"
+    tests="2" time="3.695" timestamp="Wed, 09 Mar 2016 14:58:46 GMT">
+  
+    <testcase name="knn shows on homepage" time="1.798" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="knn link works on homepage" time="1.897" assertions="3">
+
+    
+
+      <failure message="Testing if element &lt;#algorithmTitle span&gt; contains text: &quot;KNN&quot;. Element could not be located.">    at Object.&lt;anonymous&gt; (/Users/Jamie/Desktop/machine-learning/test/end-to-end/knnTest.js:15:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/nightwatch/lib/api/element-commands.js:360:20)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/nightwatch/lib/index.js:337:20)
+    at HttpRequest.emit (events.js:110:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/nightwatch/lib/index.js:365:15)
+    at HttpRequest.emit (events.js:118:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/nightwatch/lib/http/request.js:155:16)
+    at IncomingMessage.emit (events.js:129:20)
+    at _stream_readable.js:908:16
+    at process._tickCallback (node.js:355:11)</failure>
+
+    
+    </testcase>
+  
+  
+  </testsuite>
+</testsuites>

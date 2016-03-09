@@ -8,12 +8,12 @@
 
   "selenium" : {
     "start_process" : true,
-    "server_path" : "./selenium-server-standalone-2.52.0.jar",
+    "server_path" : "./Nightwatch/selenium-server-standalone-2.52.0.jar",
     "log_path" : "",
     "host" : "127.0.0.1",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.chrome.driver" : "./chromedriver",
+      "webdriver.chrome.driver" : "./Nightwatch/chromedriver",
       "webdriver.ie.driver" : ""
     }
   },

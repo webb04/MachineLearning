@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="2"
+            failures="1"
+            tests="2">
+
+  <testsuite name="OLSTest"
+    errors="2" failures="1" hostname="" id="" package="OLSTest" skipped="0"
+    tests="2" time="5.727" timestamp="Wed, 09 Mar 2016 14:58:36 GMT">
+  
+    <testcase name="ols shows on homepage" time="2.633" assertions="2">
+
+    
+
+    
+    </testcase>
+      <system-err>
+         ERROR: Unable to locate element: &quot;#algorithmTitle&quot; using: css selector
+ ERROR: Unable to locate element: &quot;#algorithmTitle&quot; using: css selector
+ ERROR: Unable to locate element: &quot;#algorithmTitle span&quot; using: css selector
+      </system-err>
+  
+    <testcase name="ols link works on homepage" time="3.094" assertions="3">
+
+    
+
+      <failure message="Testing if element &lt;#algorithmTitle&gt; contains text: &quot;OLS&quot;. Element could not be located.">    at Object.&lt;anonymous&gt; (/Users/Jamie/Desktop/machine-learning/test/end-to-end/OLSTest.js:19:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/nightwatch/lib/api/element-commands.js:360:20)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/nightwatch/lib/index.js:337:20)
+    at HttpRequest.emit (events.js:110:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/nightwatch/lib/index.js:365:15)
+    at HttpRequest.emit (events.js:118:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/nightwatch/lib/http/request.js:155:16)
+    at IncomingMessage.emit (events.js:129:20)
+    at _stream_readable.js:908:16
+    at process._tickCallback (node.js:355:11)</failure>
+
+    
+    </testcase>
+      <system-err>
+         ERROR: Unable to locate element: &quot;#algorithmTitle&quot; using: css selector
+ ERROR: Unable to locate element: &quot;#algorithmTitle&quot; using: css selector
+ ERROR: Unable to locate element: &quot;#algorithmTitle span&quot; using: css selector
+      </system-err>
+  
+  
+  </testsuite>
+</testsuites>

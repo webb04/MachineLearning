@@ -5,9 +5,9 @@
 
   <testsuite name="knn"
     errors="0" failures="0" hostname="" id="" package="knn" skipped="0"
-    tests="1" time="3.362" timestamp="Mon, 07 Mar 2016 23:27:18 GMT">
+    tests="1" time="2.388" timestamp="Mon, 07 Mar 2016 23:48:05 GMT">
   
-    <testcase name="Login Page Initial Render" time="3.362" assertions="5">
+    <testcase name="Login Page Initial Render" time="2.388" assertions="5">
 
     
 
