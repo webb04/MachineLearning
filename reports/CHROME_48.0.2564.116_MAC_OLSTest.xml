@@ -5,45 +5,36 @@
 
   <testsuite name="OLSTest"
     errors="0" failures="0" hostname="" id="" package="OLSTest" skipped="0"
-    tests="5" time="3.440" timestamp="Wed, 09 Mar 2016 23:17:43 GMT">
+    tests="5" time="7.462" timestamp="Thu, 10 Mar 2016 11:46:55 GMT">
   
-    <testcase name="ols shows on homepage" time="2.535" assertions="2">
+    <testcase name="ols shows on homepage" time="2.973" assertions="2">
 
     
 
     
     </testcase>
-      <system-err>
-         ERROR: Unable to locate element: &quot;.btn .waves-effect .waves-light&quot; using: css selector
-      </system-err>
   
-    <testcase name="ols link works on homepage" time="0.2950" assertions="2">
+    <testcase name="knn link works on homepage" time="0.2470" assertions="2">
 
     
 
     
     </testcase>
-      <system-err>
-         ERROR: Unable to locate element: &quot;.btn .waves-effect .waves-light&quot; using: css selector
-      </system-err>
   
-    <testcase name="ols form validation works" time="0.2100" assertions="0">
+    <testcase name="knn form validation works" time="2.159" assertions="1">
+
+    
     </testcase>
-      <system-err>
-         ERROR: Unable to locate element: &quot;.btn .waves-effect .waves-light&quot; using: css selector
-      </system-err>
   
-    <testcase name="ols visualisation is shown" time="0.1940" assertions="0">
+    <testcase name="knn visualisation is shown" time="1.927" assertions="2">
+
+    
+
+    
     </testcase>
-      <system-err>
-         ERROR: Unable to locate element: &quot;.btn .waves-effect .waves-light&quot; using: css selector
-      </system-err>
   
-    <testcase name="ols input works" time="0.2060" assertions="0">
+    <testcase name="ols input works" time="0.1560" assertions="0">
     </testcase>
-      <system-err>
-         ERROR: Unable to locate element: &quot;.btn .waves-effect .waves-light&quot; using: css selector
-      </system-err>
   
   
   </testsuite>

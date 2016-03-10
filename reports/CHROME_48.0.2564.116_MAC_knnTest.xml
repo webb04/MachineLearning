@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites errors="2"
+<testsuites errors="0"
             failures="0"
             tests="4">
 
   <testsuite name="knnTest"
-    errors="2" failures="0" hostname="" id="" package="knnTest" skipped="0"
-    tests="4" time="7.767" timestamp="Wed, 09 Mar 2016 23:17:52 GMT">
+    errors="0" failures="0" hostname="" id="" package="knnTest" skipped="0"
+    tests="4" time="6.371" timestamp="Thu, 10 Mar 2016 11:47:09 GMT">
   
-    <testcase name="knn shows on homepage" time="1.815" assertions="2">
+    <testcase name="knn shows on homepage" time="1.715" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="knn link works on homepage" time="0.2820" assertions="2">
+    <testcase name="knn link works on homepage" time="0.2670" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="knn form validation works" time="5.473" assertions="2">
-
-    
+    <testcase name="knn form validation works" time="2.256" assertions="1">
 
     
     </testcase>
   
-    <testcase name="knn visualisation is shown" time="0.1970" assertions="0">
+    <testcase name="knn visualisation is shown" time="2.133" assertions="2">
+
+    
+
+    
     </testcase>
   
   

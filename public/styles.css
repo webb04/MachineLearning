@@ -25,6 +25,16 @@ html, body {
 	background: #fafafa;
 }
 
+input.btn.waves-effect.waves-light:hover {
+    box-shadow: none !important;
+}
+
+
+input.btn.waves-effect.waves-light {
+    box-shadow: none !important;
+}
+
+
 /*#react-main-mount, #react-AlgorithmSelect-mount {
 	padding: 5%;
 }*/

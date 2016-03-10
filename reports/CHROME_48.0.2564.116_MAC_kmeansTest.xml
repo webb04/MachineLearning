@@ -5,39 +5,33 @@
 
   <testsuite name="kmeansTest"
     errors="0" failures="0" hostname="" id="" package="kmeansTest" skipped="0"
-    tests="4" time="5.279" timestamp="Wed, 09 Mar 2016 23:17:47 GMT">
+    tests="4" time="6.617" timestamp="Thu, 10 Mar 2016 11:47:03 GMT">
   
-    <testcase name="kmeans shows on homepage" time="1.821" assertions="2">
+    <testcase name="kmeans shows on homepage" time="1.719" assertions="2">
 
     
 
     
     </testcase>
-      <system-err>
-         ERROR: Unable to locate element: &quot;.btn .waves-effect .waves-light&quot; using: css selector
-      </system-err>
   
-    <testcase name="kmeans link works on homepage" time="0.3080" assertions="2">
+    <testcase name="kmeans link works on homepage" time="0.2720" assertions="2">
 
     
 
     
     </testcase>
-      <system-err>
-         ERROR: Unable to locate element: &quot;.btn .waves-effect .waves-light&quot; using: css selector
-      </system-err>
   
-    <testcase name="kmeans form validation works" time="2.958" assertions="0">
+    <testcase name="knn form validation works" time="2.577" assertions="1">
+
+    
     </testcase>
-      <system-err>
-         ERROR: Unable to locate element: &quot;.btn .waves-effect .waves-light&quot; using: css selector
-      </system-err>
   
-    <testcase name="kmeans visualisation is shown" time="0.1920" assertions="0">
+    <testcase name="knn visualisation is shown" time="2.049" assertions="2">
+
+    
+
+    
     </testcase>
-      <system-err>
-         ERROR: Unable to locate element: &quot;.btn .waves-effect .waves-light&quot; using: css selector
-      </system-err>
   
   
   </testsuite>
