@@ -20,6 +20,27 @@ var kMeansClustering = {
     }
 
     dataExtremes = getDataExtremes(data);
+
+
+
+
+    for (var i in data)
+    {
+        var point = data[i];
+
+        for (var dimension in point)  {
+          data[i][dimension] = point[dimension] / dataExtremes[dimension].max;
+          console.log(data[i][dimension]);
+          // console.log(point[dimension]);
+        }
+    }
+
+    dataExtremes = getDataExtremes(data);
+
+
+
+
+
     dataRange = getDataRanges(dataExtremes);
     means = initMeans(3);
 
@@ -68,6 +89,10 @@ function getDataExtremes(points) {
         }
     }
 
+
+
+
+
     return extremes;
 }
 
@@ -87,6 +112,7 @@ function initMeans(k) {
         for (var dimension in dataExtremes)
         {
             mean[dimension] = dataExtremes[dimension].min + ( Math.random() * dataRange[dimension] );
+            // mean[dimension] = dataExtremes[dimension].min + ( Math.random() );
         }
         means.push(mean);
     }
@@ -110,7 +136,7 @@ function makeAssignments() {
             {
                 var difference = point[dimension] - mean[dimension];
                 difference *= difference;
-                console.log(difference);
+                // console.log(difference);
                 sum += difference;
             }
 

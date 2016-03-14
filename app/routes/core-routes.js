@@ -42,8 +42,8 @@ module.exports = function(app) {
 	app.post('/submit', function(req, res){
 		var algorithm = req.body.algorithm.toUpperCase();
 		var inputData = req.body.inputData;
-		var featureA = req.body.featureA;
-		var featureB = req.body.featureB;
+		var featureA = req.body.featureA || null;
+		var featureB = req.body.featureB || null;
 		var featureALabel;
 		var featureBLabel;
 

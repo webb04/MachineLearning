@@ -18,8 +18,6 @@ var Form = React.createClass({
   getInitialState: function() {
     return {
       validJson: false,
-      featureAPresent: false,
-      featureBPresent: false,
       showSubmitButton: false
     };
   },
@@ -28,7 +26,7 @@ var Form = React.createClass({
     try {
       JSON.parse(data);
       this.setState({validJson : true});
-      if ((this.state.featureBPresent == true) && (this.state.featureAPresent == true)) this.setState({showSubmitButton : true});
+      this.setState({showSubmitButton : true});
     } catch (e) {
       this.setState({validJson : false, showSubmitButton: false});
       this.setState({showSubmitButton : false});
@@ -39,36 +37,12 @@ var Form = React.createClass({
     for (var key in parsedData) {
       features.push(key);
     }
-    var newFeatureA = features[0];
-    var newFeatureB = features[1];
-    $('#first_feature').text(newFeatureA);
-    $('#second_feature').text(newFeatureB);
-  },
-  checkFeatureAEntered: function() {
-    var data = $("#featureA").val();
-    if (!data) {
-      this.setState({featureAPresent : false, showSubmitButton: false});
-    } else {
-      this.setState({featureAPresent : true});
-      if ((this.state.featureBPresent == true) && (this.state.validJson == true)) this.setState({showSubmitButton : true});
-    }
-  },
-  checkFeatureBEntered: function() {
-    var data = $("#featureB").val();
-    if (!data) {
-      this.setState({featureBPresent : false, showSubmitButton: false});
-    } else {
-      this.setState({featureBPresent : true});
-      if ((this.state.featureAPresent == true) && (this.state.validJson == true)) this.setState({showSubmitButton : true});
-    }
   },
   checkAlgotithmSelected: function() {
 
   },
   render: function() {
       var text = this.state.validJson ? '' : 'Please enter some training data';
-      var featureA = this.state.featureAPresent ? '' : 'Please enter a first feature';
-      var featureB = this.state.featureBPresent ? '' : 'Please enter a second feature';
 
       return (
         <div>
@@ -93,21 +67,9 @@ var Form = React.createClass({
                <label for="textarea1">Training Data</label>
              </div>
            </div>
-           <div className="row">
-             <div className="input-field col s6">
-               <input placeholder="" name="featureA" id="featureA" type="text" class="validate" onKeyUp={this.checkFeatureAEntered}/>
-               <label id="first_feature"  for="first_name">Feature A</label>
-             </div>
-             <div className="input-field col s6">
-               <input placeholder="" name="featureB" type="text" id="featureB" class="validate" onKeyUp={this.checkFeatureBEntered}/>
-               <label id="second_feature" for="first_name">Feature B</label>
-             </div>
-           </div>
 
            <div className="row shiftRight errorContainer">
              <p className="errorMessage">{text}</p>
-             <p className="errorMessage">{featureA}</p>
-             <p className="errorMessage">{featureB}</p>
            </div>
 
            <div className="row shiftRight">
