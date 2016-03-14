@@ -25,6 +25,20 @@ html, body {
 	background: #fafafa;
 }
 
+.bullet {
+	padding-left: 20px !important;
+}
+
+.bullet li {
+	list-style-type: circle !important;
+}
+
+.informationTitle {
+	text-decoration: underline;
+	font-weight: bold;
+	margin-top: 10px;
+}
+
 input.btn.waves-effect.waves-light:hover {
     box-shadow: none !important;
 }

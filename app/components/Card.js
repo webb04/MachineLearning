@@ -16,7 +16,14 @@ var Card = React.createClass({
             </div>
             <div className="card-reveal">
               <span className="card-title grey-text text-darken-4">{this.props.algorithm.name}<i className="material-icons right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              <h6 className="informationTitle">Top uses</h6>
+              <ul className="bullet">
+                {
+                  this.props.algorithm.tags.map(function(tag) {
+                    return (<li>{tag}</li>)
+                  })
+                }
+              </ul>
               <img className="popupimg" src={'/images/' + this.props.algorithm.popupimg} />
             </div>
           </div>

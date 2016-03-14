@@ -13,7 +13,7 @@ var AlgorithmSelect = React.createClass({
         "popupimg": "classify.png",
         "type": "Classification",
         "description" : "",
-        "tags": []
+        "tags": ["Fraud Detection", "Recommendation Systems", "Spam Detection"]
       },
       {
         "name":"K-Means Clustering",
@@ -22,7 +22,7 @@ var AlgorithmSelect = React.createClass({
         "popupimg": "clustering.png",
         "type": "Clustering",
         "description": "",
-        "tags": []
+        "tags": ["Market Segmentation", "Social Network Analysis", "Content Aggregation"]
       },
       {
         "name":"Linear Regression",
@@ -31,7 +31,7 @@ var AlgorithmSelect = React.createClass({
         "popupimg": "regress.png",
         "type": "Regression",
         "description": "",
-        "tags": []
+        "tags": ["Forecasting", "Analysing the impact of price changes", "Evaluating trends and sales estimates"]
       }];
     return (
         <div className="flex-container">

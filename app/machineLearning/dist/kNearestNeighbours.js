@@ -1,6 +1,6 @@
 "use strict";
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -9,7 +9,42 @@ var kNearestNeighbours = {
     return "kNearestNeighbours!";
   },
   run: function run(data, featureA, featureB) {
-    // console.log(data);
+    // var extremes = [];
+
+    // for (var i in data)
+    // {
+    //     var point = data[i];
+    //
+    //     for (var dimension in point)
+    //     {
+    //         if ( ! extremes[dimension] )
+    //         {
+    //             extremes[dimension] = {min: 2000, max: 0};
+    //         }
+    //
+    //         if (point[dimension] < extremes[dimension].min)
+    //         {
+    //             extremes[dimension].min = point[dimension];
+    //         }
+    //
+    //         if (point[dimension] > extremes[dimension].max)
+    //         {
+    //             extremes[dimension].max = point[dimension];
+    //         }
+    //     }
+    // }
+    //
+    // for (var i in data)
+    // {
+    //     var point = data[i];
+    //
+    //     for (var dimension in point)  {
+    //       data[i][dimension] = point[dimension] / extremes[dimension].max;
+    //       console.log(data[i][dimension]);
+    //       // console.log(point[dimension]);
+    //     }
+    // }
+
     var nodes = new NodeList(3);
     for (var i in data) {
       var newNode = {};
@@ -22,18 +57,15 @@ var kNearestNeighbours = {
       newNode.type = array[2];
       nodes.add(new Node(newNode));
     }
-    // let featureA = Math.round(Math.random() * 10);
-    // let featureB = Math.round(Math.random() * 2000);
     featureA = parseInt(featureA);
     featureB = parseInt(featureB);
     nodes.add(new Node({ featureA: featureA, featureB: featureB, type: false }));
 
     return nodes.determineUnkown();
-    //nodes.draw("canvas");
   }
 };
 
-var Node = (function () {
+var Node = function () {
   function Node(object) {
     _classCallCheck(this, Node);
 
@@ -49,7 +81,6 @@ var Node = (function () {
       var featureBRange = featureB.max - featureB.min;
 
       for (var i in this.neighbours) {
-        /* Just shortcut syntax */
         var neighbour = this.neighbours[i];
 
         var delta_featureA = neighbour.featureA - this.featureA;
@@ -98,9 +129,9 @@ var Node = (function () {
   }]);
 
   return Node;
-})();
+}();
 
-var NodeList = (function () {
+var NodeList = function () {
   function NodeList(k) {
     _classCallCheck(this, NodeList);
 
@@ -155,9 +186,35 @@ var NodeList = (function () {
         }
       }
     }
+  }, {
+    key: "getDataExtremes",
+    value: function getDataExtremes(points) {
+
+      var extremes = [];
+
+      for (var i in data) {
+        var point = data[i];
+
+        for (var dimension in point) {
+          if (!extremes[dimension]) {
+            extremes[dimension] = { min: 2000, max: 0 };
+          }
+
+          if (point[dimension] < extremes[dimension].min) {
+            extremes[dimension].min = point[dimension];
+          }
+
+          if (point[dimension] > extremes[dimension].max) {
+            extremes[dimension].max = point[dimension];
+          }
+        }
+      }
+
+      return extremes;
+    }
   }]);
 
   return NodeList;
-})();
+}();
 
 module.exports = kNearestNeighbours;

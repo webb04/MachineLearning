@@ -3,6 +3,43 @@ let kNearestNeighbours = {
     return "kNearestNeighbours!";
   },
   run: function(data, featureA, featureB) {
+    // var extremes = [];
+
+    // for (var i in data)
+    // {
+    //     var point = data[i];
+    //
+    //     for (var dimension in point)
+    //     {
+    //         if ( ! extremes[dimension] )
+    //         {
+    //             extremes[dimension] = {min: 2000, max: 0};
+    //         }
+    //
+    //         if (point[dimension] < extremes[dimension].min)
+    //         {
+    //             extremes[dimension].min = point[dimension];
+    //         }
+    //
+    //         if (point[dimension] > extremes[dimension].max)
+    //         {
+    //             extremes[dimension].max = point[dimension];
+    //         }
+    //     }
+    // }
+    //
+    // for (var i in data)
+    // {
+    //     var point = data[i];
+    //
+    //     for (var dimension in point)  {
+    //       data[i][dimension] = point[dimension] / extremes[dimension].max;
+    //       console.log(data[i][dimension]);
+    //       // console.log(point[dimension]);
+    //     }
+    // }
+
+
     let nodes = new NodeList(3);
     for (let i in data) {
       let newNode = {};
@@ -134,6 +171,41 @@ class NodeList {
       }
     }
   }
+
+  getDataExtremes(points) {
+
+      var extremes = [];
+
+      for (var i in data)
+      {
+          var point = data[i];
+
+          for (var dimension in point)
+          {
+              if ( ! extremes[dimension] )
+              {
+                  extremes[dimension] = {min: 2000, max: 0};
+              }
+
+              if (point[dimension] < extremes[dimension].min)
+              {
+                  extremes[dimension].min = point[dimension];
+              }
+
+              if (point[dimension] > extremes[dimension].max)
+              {
+                  extremes[dimension].max = point[dimension];
+              }
+          }
+      }
+
+
+
+
+
+      return extremes;
+  }
+
 }
 
 module.exports = kNearestNeighbours;
