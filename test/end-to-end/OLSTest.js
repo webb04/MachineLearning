@@ -6,7 +6,7 @@ module.exports = {
     .verify.containsText('.card.medium:nth-child(3)', 'Linear Regression')
   },
 
-  'knn link works on homepage': function (client) {
+  'ols link works on homepage': function (client) {
     client
     .url('http://machine-learning-analytics.herokuapp.com')
     .click(".card.medium:nth-child(3) a", function(response) {
@@ -15,7 +15,7 @@ module.exports = {
     });
   },
 
-  'knn form validation works': function (client) {
+  'ols form validation works': function (client) {
     client
     .url('http://machine-learning-analytics.herokuapp.com/regression')
     .pause(1000)
@@ -24,7 +24,7 @@ module.exports = {
     .submitForm('form');
   },
 
-  'knn visualisation is shown': function (client) {
+  'ols visualisation is shown': function (client) {
     client
     .url('http://machine-learning-analytics.herokuapp.com/regression')
     .pause(1000)

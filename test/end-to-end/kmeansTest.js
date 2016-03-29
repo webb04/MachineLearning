@@ -15,7 +15,7 @@ module.exports = {
     });
   },
 
-  'knn form validation works': function (client) {
+  'kmeans form validation works': function (client) {
     client
     .url('http://machine-learning-analytics.herokuapp.com/kmeans')
     .pause(1000)
@@ -26,7 +26,7 @@ module.exports = {
     .submitForm('form');
   },
 
-  'knn visualisation is shown': function (client) {
+  'kmeans visualisation is shown': function (client) {
     client
     .url('http://machine-learning-analytics.herokuapp.com/kmeans')
     .pause(1000)
