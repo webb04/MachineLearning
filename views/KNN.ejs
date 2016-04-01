@@ -8,19 +8,50 @@
   <div class="determinate select" style="width: 66.666666666666666%"></div>
 </div>
 
+<style>
+.modal {
+  max-height: 90% !important;
+}
+
+#helpModal {
+  top: 5% !important;
+}
+</style>
+
 <div id="react-main-mount">
   <%- reactOutput %>
 </div>
 
 <div id="helpModal" class="modal">
   <div class="modal-content">
-    <h4>Ordinary Least Squares</h4>
-    <p>A bunch of text</p>
+    <h4 class="modal-title">K-Nearest Neighbours</h4>
+    <div class="modal-wrapper">
+      <p>1. Training data</p>
+      <div>
+    	   <div class="modal-wrapper-left">
+           <img style="width: 250px !important" src="/images/classificationTraining.png">
+         </div>
+         <div class="modal-wrapper-right">
+           <ul>
+             <li>Two attributes</li>
+             <li>Last line should be the label</li>
+             <li>Valid JSON</li>
+           </ul>
+         </div>
+      </div>
+    <p>2. Enter new data to be classified</p>
+    <ul class="newfeatures">
+      <li>Enter feature A (First attribute)</li>
+      <li>Enter feature B (Second attribute)</li>
+    </ul>
+    <p>3. Submit</p>
+  </div>
   </div>
   <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves btn-flat">Agree</a>
+    <a href="#!" class=" modal-action modal-close waves-effect waves btn-flat">Close</a>
   </div>
 </div>
+
 
 <script src="/build/react.js"></script>
 <script src="/build/react-dom.js"></script>

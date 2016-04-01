@@ -25,6 +25,55 @@ html, body {
 	background: #fafafa;
 }
 
+.modal .modal-footer .btn-flat {
+    float: right;
+    margin: 6px 0;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.modal-title, .modal-wrapper {
+	text-align: center;
+}
+
+.modal-wrapper p {
+	color: #2A6FA0;
+	padding-top: 30px;
+	clear: both;
+}
+
+.modal-wrapper-left {
+	width: 60%;
+	display: inline-block;
+	float: left;
+}
+
+.modal-wrapper-right {
+	width: 25%;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 75px;
+}
+
+.newfeatures {
+	width: 275px;
+	margin: auto;
+}
+
+.modal-wrapper img {
+	width: 35%;
+}
+
+.modal-wrapper ul li {
+	list-style-type: disc;
+}
+
+#helpModal {
+	overflow-y: hidden;
+}
+
 .bullet {
 	padding-left: 20px !important;
 }
@@ -43,11 +92,9 @@ input.btn.waves-effect.waves-light:hover {
     box-shadow: none !important;
 }
 
-
 input.btn.waves-effect.waves-light {
     box-shadow: none !important;
 }
-
 
 /*#react-main-mount, #react-AlgorithmSelect-mount {
 	padding: 5%;
@@ -56,6 +103,7 @@ input.btn.waves-effect.waves-light {
 #react-main-mount, #react-AlgorithmSelect-mount {
 	padding: 3%;
 }
+
 .card-panel {
 	padding: 10px;
 	box-shadow: none !important;

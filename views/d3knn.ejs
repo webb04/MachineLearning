@@ -143,7 +143,8 @@
       .attr("x", width - 18)
       .attr("width", 18)
       .attr("height", 18)
-      .style("fill", color);
+      .style("fill", color)
+      .style("opacity", .4);
 
     // legend text
     legend.append("text")
@@ -154,6 +155,21 @@
     .text(function(d) { return d;});
 
   </script>
+
+  <script>
+  d3.selectAll('circle').on('mouseenter', function() {
+    if (this !== d3.select('circle:last-child').node()) {
+      this.parentElement.appendChild(this);
+      d3.select(this)
+        .transition()
+        .duration(500)
+        .attr('r', 14)
+        .transition()
+        .ease('elastic')
+        .attr('r', 9);
+    }
+  });
+</script>
 
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
