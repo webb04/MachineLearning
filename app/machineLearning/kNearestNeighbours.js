@@ -3,43 +3,7 @@ let kNearestNeighbours = {
     return "kNearestNeighbours!";
   },
   run: function(data, featureA, featureB) {
-    // var extremes = [];
-
-    // for (var i in data)
-    // {
-    //     var point = data[i];
-    //
-    //     for (var dimension in point)
-    //     {
-    //         if ( ! extremes[dimension] )
-    //         {
-    //             extremes[dimension] = {min: 2000, max: 0};
-    //         }
-    //
-    //         if (point[dimension] < extremes[dimension].min)
-    //         {
-    //             extremes[dimension].min = point[dimension];
-    //         }
-    //
-    //         if (point[dimension] > extremes[dimension].max)
-    //         {
-    //             extremes[dimension].max = point[dimension];
-    //         }
-    //     }
-    // }
-    //
-    // for (var i in data)
-    // {
-    //     var point = data[i];
-    //
-    //     for (var dimension in point)  {
-    //       data[i][dimension] = point[dimension] / extremes[dimension].max;
-    //       console.log(data[i][dimension]);
-    //       // console.log(point[dimension]);
-    //     }
-    // }
-
-
+    // Normalise?
     let nodes = new NodeList(3);
     for (let i in data) {
       let newNode = {};
@@ -55,7 +19,6 @@ let kNearestNeighbours = {
     featureA = parseInt(featureA);
     featureB = parseInt(featureB);
     nodes.add(new Node({featureA: featureA, featureB: featureB, type: false}));
-
     return nodes.determineUnkown();
   }
 };
@@ -70,54 +33,37 @@ class Node {
   measureDistances(featureA, featureB) {
     let featureARange = featureA.max - featureA.min;
     let featureBRange = featureB.max - featureB.min;
-
-    for (let i in this.neighbours)
-    {
-        let neighbour = this.neighbours[i];
-
-        let delta_featureA = neighbour.featureA - this.featureA;
-        delta_featureA = (delta_featureA) / featureARange;
-
-        let delta_featureB  = neighbour.featureB  - this.featureB;
-        delta_featureB = (delta_featureB) / featureBRange;
-
-        neighbour.distance = Math.sqrt( delta_featureA*delta_featureA + delta_featureB*delta_featureB );
+    for (let i in this.neighbours) {
+      let neighbour = this.neighbours[i];
+      let delta_featureA = neighbour.featureA - this.featureA;
+      delta_featureA = (delta_featureA) / featureARange;
+      let delta_featureB  = neighbour.featureB  - this.featureB;
+      delta_featureB = (delta_featureB) / featureBRange;
+      neighbour.distance = Math.sqrt(delta_featureA*delta_featureA + delta_featureB*delta_featureB);
     }
   }
 
   sortByDistance() {
-    this.neighbours.sort(function (a, b) {
-        return a.distance - b.distance;
-    });
+    this.neighbours.sort((a, b) => a.distance - b.distance);
   }
 
   guessType(k) {
     let types = {};
-
-    for (let i in this.neighbours.slice(0, k))
-    {
-        let neighbour = this.neighbours[i];
-
-        if ( ! types[neighbour.type] )
-        {
-            types[neighbour.type] = 0;
-        }
-
-        types[neighbour.type] += 1;
+    for (let i in this.neighbours.slice(0, k)) {
+      let neighbour = this.neighbours[i];
+      if (!types[neighbour.type]) {
+        types[neighbour.type] = 0;
+      }
+      types[neighbour.type] += 1;
     }
-
     let guess = {type: false, count: 0};
-    for (let type in types)
-    {
-        if (types[type] > guess.count)
-        {
-            guess.type = type;
-            guess.count = types[type];
-        }
+    for (let type in types){
+      if (types[type] > guess.count) {
+        guess.type = type;
+        guess.count = types[type];
+      }
     }
-
     this.guess = guess;
-
     return types;
   }
 }
@@ -143,11 +89,8 @@ class NodeList {
           }
           this.nodes[i].neighbours.push(new Node(this.nodes[j]));
         }
-
         this.nodes[i].measureDistances(this.featureA, this.featureB);
-
         this.nodes[i].sortByDistance();
-
         return this.nodes[i].guessType(this.k);
       }
     }
@@ -173,38 +116,40 @@ class NodeList {
   }
 
   getDataExtremes(points) {
-
-      var extremes = [];
-
-      for (var i in data)
-      {
-          var point = data[i];
-
-          for (var dimension in point)
-          {
-              if ( ! extremes[dimension] )
-              {
-                  extremes[dimension] = {min: 2000, max: 0};
-              }
-
-              if (point[dimension] < extremes[dimension].min)
-              {
-                  extremes[dimension].min = point[dimension];
-              }
-
-              if (point[dimension] > extremes[dimension].max)
-              {
-                  extremes[dimension].max = point[dimension];
-              }
-          }
+    let extremes = [];
+    for (let i in data){
+      let point = data[i];
+      for (let dimension in point) {
+        if (!extremes[dimension]) {
+          extremes[dimension] = {min: 2000, max: 0};
+        }
+        if (point[dimension] < extremes[dimension].min) {
+          extremes[dimension].min = point[dimension];
+        }
+        if (point[dimension] > extremes[dimension].max) {
+          extremes[dimension].max = point[dimension];
+        }
       }
-
-
-
-
-
-      return extremes;
+    }
+    return extremes;
   }
+
+  // function getDataExtremes(points) {
+  //   let extremes = [];
+  //   for (let i in data) {
+  //     let point = data[i];
+  //     for (let dimension in point) {
+  //       switch(true) {
+  //         case (!extremes[dimension]): extremes[dimension] = {min: 2000, max: 0};
+  //         case (point[dimension] < extremes[dimension].min): extremes[dimension].min = point[dimension];
+  //         case (point[dimension] > extremes[dimension].max): extremes[dimension].max = point[dimension];
+  //         break;
+  //       }
+  //     }
+  //   }
+  //   return extremes;
+  // }
+
 
 }
 

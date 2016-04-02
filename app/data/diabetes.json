@@ -2,51 +2,51 @@
   {
     "plasma_glucose_concentration": 148,
     "diastolic_blood_pressure": 72,
-    "type": 1
+    "type": "positive"
   },
   {
     "plasma_glucose_concentration": 85,
     "diastolic_blood_pressure": 66,
-    "type": 0
+    "type": "negative"
   },
   {
     "plasma_glucose_concentration": 138,
     "diastolic_blood_pressure": 76,
-    "type": 0
+    "type": "negative"
   },
   {
     "plasma_glucose_concentration": 102,
     "diastolic_blood_pressure": 76,
-    "type": 0
+    "type": "negative"
   },
   {
     "plasma_glucose_concentration": 88,
     "diastolic_blood_pressure": 66,
-    "type": 0
+    "type": "negative"
   },
   {
     "plasma_glucose_concentration": 133,
     "diastolic_blood_pressure": 72,
-    "type": 1
+    "type": "positive"
   },
   {
     "plasma_glucose_concentration": 95,
     "diastolic_blood_pressure": 72,
-    "type": 0
+    "type": "negative"
   },
   {
     "plasma_glucose_concentration": 81,
     "diastolic_blood_pressure": 68,
-    "type": 0
+    "type": "negative"
   },
   {
     "plasma_glucose_concentration": 134,
     "diastolic_blood_pressure": 72,
-    "type": 1
+    "type": "positive"
   },
   {
     "plasma_glucose_concentration": 171,
     "diastolic_blood_pressure": 72,
-    "type": 1
+    "type": "positive"
   }
 ]

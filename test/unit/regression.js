@@ -1,30 +1,47 @@
-var expect    = require("chai").expect;
-var x = [1,2,3,4,5];
-var y = [1,2,3,4,5];
-var leastSquares = require("../leastSquares")(x, y);
+var expect = require("chai").expect;
 
-describe("Classification", function() {
-  describe("RGB to Hex conversion", function() {
-    it("converts the basic colors", function() {
-      // var redHex   = converter.rgbToHex(255, 0, 0);
-      // var greenHex = converter.rgbToHex(0, 255, 0);
-      // var blueHex  = converter.rgbToHex(0, 0, 255);
-
-      // expect(redHex).to.equal("ff0000");
-      // expect(greenHex).to.equal("00ff00");
-      // expect(blueHex).to.equal("0000ff");
-    });
+describe("Regression", function() {
+  it("Calculates for perfect positive correlation", function() {
+    var x = [1,2,3,4,5];
+    var y = [1,2,3,4,5];
+    var leastSquares = require("../leastSquares")(x, y);
+    var slope = leastSquares[0];
+    var Intercept = leastSquares[1];
+    var rSquare = leastSquares[2];
+    expect(slope).to.equal(1);
+    expect(Intercept).to.equal(0);
+    expect(rSquare).to.equal(0);
   });
 
-  describe("Hex to RGB conversion", function() {
-    it("converts the basic colors", function() {
-      // var red   = converter.hexToRgb("ff0000");
-      // var green = converter.hexToRgb("00ff00");
-      // var blue  = converter.hexToRgb("0000ff");
+  it("Calculates for perfect negative correlation", function() {
+    var x = [-1,-2,-3,-4,-5];
+    var y = [1,2,3,4,5];
+    var leastSquares = require("../leastSquares")(x, y);
+    var slope = leastSquares[0];
+    var Intercept = leastSquares[1];
+    var rSquare = leastSquares[2];
+    expect(slope).to.equal(-1);
+    expect(Intercept).to.equal(0);
+    expect(rSquare).to.equal(0);
+  });
 
-      // expect(red).to.deep.equal([255, 0, 0]);
-      // expect(green).to.deep.equal([0, 255, 0]);
-      // expect(blue).to.deep.equal([0, 0, 255]);
-    });
+  it("Calculates for positive correlation", function() {
+    var x = [1,2,3,4,5];
+    var y = [3,7,9,6,54];
+    var leastSquares = require("../leastSquares")(x, y);
+    var slope = leastSquares[0];
+    var Intercept = leastSquares[1];
+    expect(slope).to.be.within(10.0999, 10.1);
+    expect(Intercept).to.be.closeTo(-14.4999, 0.005);
+  });
+
+  it("Calculates for negative correlation", function() {
+    var x = [-10,-23,-26,-34,-55];
+    var y = [13,17,19,26,44];
+    var leastSquares = require("../leastSquares")(x, y);
+    var slope = leastSquares[0];
+    var Intercept = leastSquares[1];
+    expect(slope).to.be.closeTo(-0.7207, 0.005);
+    expect(Intercept).to.be.closeTo(2.465, 0.005);
   });
 });

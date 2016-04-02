@@ -9,42 +9,7 @@ var kNearestNeighbours = {
     return "kNearestNeighbours!";
   },
   run: function run(data, featureA, featureB) {
-    // var extremes = [];
-
-    // for (var i in data)
-    // {
-    //     var point = data[i];
-    //
-    //     for (var dimension in point)
-    //     {
-    //         if ( ! extremes[dimension] )
-    //         {
-    //             extremes[dimension] = {min: 2000, max: 0};
-    //         }
-    //
-    //         if (point[dimension] < extremes[dimension].min)
-    //         {
-    //             extremes[dimension].min = point[dimension];
-    //         }
-    //
-    //         if (point[dimension] > extremes[dimension].max)
-    //         {
-    //             extremes[dimension].max = point[dimension];
-    //         }
-    //     }
-    // }
-    //
-    // for (var i in data)
-    // {
-    //     var point = data[i];
-    //
-    //     for (var dimension in point)  {
-    //       data[i][dimension] = point[dimension] / extremes[dimension].max;
-    //       console.log(data[i][dimension]);
-    //       // console.log(point[dimension]);
-    //     }
-    // }
-
+    // Normalise?
     var nodes = new NodeList(3);
     for (var i in data) {
       var newNode = {};
@@ -60,7 +25,6 @@ var kNearestNeighbours = {
     featureA = parseInt(featureA);
     featureB = parseInt(featureB);
     nodes.add(new Node({ featureA: featureA, featureB: featureB, type: false }));
-
     return nodes.determineUnkown();
   }
 };
@@ -79,16 +43,12 @@ var Node = function () {
     value: function measureDistances(featureA, featureB) {
       var featureARange = featureA.max - featureA.min;
       var featureBRange = featureB.max - featureB.min;
-
       for (var i in this.neighbours) {
         var neighbour = this.neighbours[i];
-
         var delta_featureA = neighbour.featureA - this.featureA;
         delta_featureA = delta_featureA / featureARange;
-
         var delta_featureB = neighbour.featureB - this.featureB;
         delta_featureB = delta_featureB / featureBRange;
-
         neighbour.distance = Math.sqrt(delta_featureA * delta_featureA + delta_featureB * delta_featureB);
       }
     }
@@ -103,17 +63,13 @@ var Node = function () {
     key: "guessType",
     value: function guessType(k) {
       var types = {};
-
       for (var i in this.neighbours.slice(0, k)) {
         var neighbour = this.neighbours[i];
-
         if (!types[neighbour.type]) {
           types[neighbour.type] = 0;
         }
-
         types[neighbour.type] += 1;
       }
-
       var guess = { type: false, count: 0 };
       for (var type in types) {
         if (types[type] > guess.count) {
@@ -121,9 +77,7 @@ var Node = function () {
           guess.count = types[type];
         }
       }
-
       this.guess = guess;
-
       return types;
     }
   }]);
@@ -157,11 +111,8 @@ var NodeList = function () {
             }
             this.nodes[i].neighbours.push(new Node(this.nodes[j]));
           }
-
           this.nodes[i].measureDistances(this.featureA, this.featureB);
-
           this.nodes[i].sortByDistance();
-
           return this.nodes[i].guessType(this.k);
         }
       }
@@ -189,27 +140,21 @@ var NodeList = function () {
   }, {
     key: "getDataExtremes",
     value: function getDataExtremes(points) {
-
       var extremes = [];
-
       for (var i in data) {
         var point = data[i];
-
         for (var dimension in point) {
           if (!extremes[dimension]) {
             extremes[dimension] = { min: 2000, max: 0 };
           }
-
           if (point[dimension] < extremes[dimension].min) {
             extremes[dimension].min = point[dimension];
           }
-
           if (point[dimension] > extremes[dimension].max) {
             extremes[dimension].max = point[dimension];
           }
         }
       }
-
       return extremes;
     }
   }]);

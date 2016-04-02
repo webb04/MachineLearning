@@ -1,7 +1,7 @@
 var React = require('react/addons'),
 		ReactApp = React.createFactory(require('../components/ReactApp')),
 		AlgorithmSelect = React.createFactory(require('../components/AlgorithmSelect')),
-		kMeansClustering = require("../machineLearning/kMeansClustering"),
+		kMeansClustering = require("../machineLearning/dist/kMeansClustering"),
 		kNearestNeighbours = require("../machineLearning/dist/kNearestNeighbours");
 
 module.exports = function(app) {
