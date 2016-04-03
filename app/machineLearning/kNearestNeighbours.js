@@ -1,9 +1,5 @@
 let kNearestNeighbours = {
-  information: function() {
-    return "kNearestNeighbours!";
-  },
   run: function(data, featureA, featureB) {
-    // Normalise?
     let nodes = new NodeList(3);
     for (let i in data) {
       let newNode = {};
@@ -19,7 +15,24 @@ let kNearestNeighbours = {
     featureA = parseInt(featureA);
     featureB = parseInt(featureB);
     nodes.add(new Node({featureA: featureA, featureB: featureB, type: false}));
-    return nodes.determineUnkown();
+
+    nodes.getDataRanges();
+    for (let i in nodes.nodes) {
+      if (!nodes.nodes[i].type) {
+        nodes.nodes[i].neighbours = [];
+        for (let j in nodes.nodes) {
+          if (!nodes.nodes[j].type) {
+            continue;
+          }
+          nodes.nodes[i].neighbours.push(new Node(nodes.nodes[j]));
+        }
+        nodes.nodes[i].getEuclideanDistance(nodes.featureA, nodes.featureB);
+        nodes.nodes[i].euclideanDistanceSort();
+        var prediction = nodes.nodes[i].predict(nodes.k);
+      }
+    }
+
+    return prediction;
   }
 };
 
@@ -30,24 +43,26 @@ class Node {
     }
   }
 
-  measureDistances(featureA, featureB) {
-    let featureARange = featureA.max - featureA.min;
-    let featureBRange = featureB.max - featureB.min;
+  getEuclideanDistance(featureA, featureB) {
+    let featureARange = featureA.maximum - featureA.minimum;
+    let featureBRange = featureB.maximum - featureB.minimum;
     for (let i in this.neighbours) {
       let neighbour = this.neighbours[i];
       let delta_featureA = neighbour.featureA - this.featureA;
       delta_featureA = (delta_featureA) / featureARange;
       let delta_featureB  = neighbour.featureB  - this.featureB;
       delta_featureB = (delta_featureB) / featureBRange;
-      neighbour.distance = Math.sqrt(delta_featureA*delta_featureA + delta_featureB*delta_featureB);
+      let a = delta_featureA*delta_featureA;
+      let b = delta_featureB*delta_featureB;
+      neighbour.distance = Math.sqrt(a + b);
     }
   }
 
-  sortByDistance() {
+  euclideanDistanceSort() {
     this.neighbours.sort((a, b) => a.distance - b.distance);
   }
 
-  guessType(k) {
+  predict(k=3) {
     let types = {};
     for (let i in this.neighbours.slice(0, k)) {
       let neighbour = this.neighbours[i];
@@ -78,40 +93,14 @@ class NodeList {
     this.nodes.push(node);
   }
 
-  determineUnkown() {
-    this.calculateRanges();
+  getDataRanges() {
+    this.featureA = {minimum: 1000000, maximum: 0};
+    this.featureB = {minimum: 1000000, maximum: 0};
     for (let i in this.nodes) {
-      if (!this.nodes[i].type) {
-        this.nodes[i].neighbours = [];
-        for (let j in this.nodes) {
-          if (!this.nodes[j].type) {
-            continue;
-          }
-          this.nodes[i].neighbours.push(new Node(this.nodes[j]));
-        }
-        this.nodes[i].measureDistances(this.featureA, this.featureB);
-        this.nodes[i].sortByDistance();
-        return this.nodes[i].guessType(this.k);
-      }
-    }
-  }
-
-  calculateRanges() {
-    this.featureA = {min: 1000000, max: 0};
-    this.featureB = {min: 1000000, max: 0};
-    for (let i in this.nodes) {
-      if (this.nodes[i].featureA < this.featureA.min) {
-        this.featureA.min = this.nodes[i].featureA;
-      }
-      if (this.nodes[i].featureA > this.featureA.max) {
-        this.featureA.max = this.nodes[i].featureA;
-      }
-      if (this.nodes[i].featureB < this.featureB.min) {
-        this.featureB.min = this.nodes[i].featureB;
-      }
-      if (this.nodes[i].featureB > this.featureB.max) {
-        this.featureB.max = this.nodes[i].featureB;
-      }
+      this.featureA.minimum = this.nodes[i].featureA < this.featureA.minimum ? this.nodes[i].featureA : this.featureA.minimum
+      this.featureA.maximum = this.nodes[i].featureA > this.featureA.maximum ? this.nodes[i].featureA : this.featureA.maximum
+      this.featureB.minimum = this.nodes[i].featureB < this.featureB.minimum ? this.nodes[i].featureB : this.featureB.minimum
+      this.featureB.maximum = this.nodes[i].featureB > this.featureB.maximum ? this.nodes[i].featureB : this.featureB.maximum
     }
   }
 
@@ -120,37 +109,17 @@ class NodeList {
     for (let i in data){
       let point = data[i];
       for (let dimension in point) {
-        if (!extremes[dimension]) {
-          extremes[dimension] = {min: 2000, max: 0};
-        }
-        if (point[dimension] < extremes[dimension].min) {
-          extremes[dimension].min = point[dimension];
-        }
-        if (point[dimension] > extremes[dimension].max) {
-          extremes[dimension].max = point[dimension];
-        }
+        extremes[dimension] = !extremes[dimension] ? {minimum: 1000000, maximum: 0} : extremes[dimension];
+        extremes[dimension].minimum = point[dimension] < extremes[dimension].minimum ? point[dimension] : extremes[dimension].minimum;
+        extremes[dimension].maximum = point[dimension] > extremes[dimension].maximum ? point[dimension] : extremes[dimension].maximum;
       }
     }
     return extremes;
   }
-
-  // function getDataExtremes(points) {
-  //   let extremes = [];
-  //   for (let i in data) {
-  //     let point = data[i];
-  //     for (let dimension in point) {
-  //       switch(true) {
-  //         case (!extremes[dimension]): extremes[dimension] = {min: 2000, max: 0};
-  //         case (point[dimension] < extremes[dimension].min): extremes[dimension].min = point[dimension];
-  //         case (point[dimension] > extremes[dimension].max): extremes[dimension].max = point[dimension];
-  //         break;
-  //       }
-  //     }
-  //   }
-  //   return extremes;
-  // }
-
-
 }
 
 module.exports = kNearestNeighbours;
+module.exports.Node = Node;
+module.exports.NodeList = NodeList;
+// global.Node = Node;
+// global.NodeList = NodeList;

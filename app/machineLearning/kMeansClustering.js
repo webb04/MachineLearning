@@ -33,49 +33,47 @@ let kMeansClustering = {
   }
 }
 
-function getDataRanges(extremes) {
-  let ranges = extremes.map( range => range.max - range.min );
+let getDataRanges = (extremes) => {
+  let ranges = extremes.map( range => range.maximum - range.minimum );
   return ranges;
 }
 
-function getDataExtremes(points) {
+let getDataExtremes = (data) => {
   let extremes = [];
   for (let i in data) {
     let point = data[i];
     for (let dimension in point) {
-      switch(true) {
-        case (!extremes[dimension]): extremes[dimension] = {min: 2000, max: 0};
-        case (point[dimension] < extremes[dimension].min): extremes[dimension].min = point[dimension];
-        case (point[dimension] > extremes[dimension].max): extremes[dimension].max = point[dimension];
-        break;
-      }
+      extremes[dimension] = (!extremes[dimension]) ? {minimum: 1000000, maximum: 0} : extremes[dimension];
+      extremes[dimension].minimum = (point[dimension] < extremes[dimension].minimum) ? point[dimension] : extremes[dimension].minimum;
+      extremes[dimension].maximum = (point[dimension] > extremes[dimension].maximum) ? point[dimension] : extremes[dimension].maximum;
     }
   }
   return extremes;
 }
 
-function normalise(data) {
+let normalise = (data) => {
   for (let i in data) {
     let point = data[i];
     for (let dimension in point)  {
-      data[i][dimension] = point[dimension] / dataExtremes[dimension].max;
+      data[i][dimension] = point[dimension] / dataExtremes[dimension].maximum;
     }
   }
   return data;
 }
 
-function initialise(k=3) {
-  while (k--) {
+let initialise = (k=3) => {
+  while (k > 0) {
     let mean = [];
     for (let dimension in dataExtremes) {
-      mean[dimension] = dataExtremes[dimension].min + ( Math.random() * dataRange[dimension] );
+      mean[dimension] = dataExtremes[dimension].minimum + ( Math.random() * dataRange[dimension] );
     }
     means.push(mean);
+    k--;
   }
   return means;
 };
 
-function assignToClusters() {
+let assignToClusters = () => {
   for (let i in data) {
     let point = data[i];
     let distances = [];
@@ -93,18 +91,16 @@ function assignToClusters() {
   }
 }
 
-function updateMeans() {
+let updateMeans = () => {
   assignToClusters();
-  sums = Array(means.length);
-  counts = Array(means.length);
   let moved = false;
   calculateSums();
-  moved = (sums.toString() !== means.toString()) ? true : false;
+  if (means.toString() !== sums.toString()) { moved = true; }
   means = sums;
   return moved;
 }
 
-function calculateSums() {
+let calculateSums = () => {
   for (let j in means){
     counts[j] = 0;
     sums[j] = Array( means[j].length );
@@ -125,7 +121,7 @@ function calculateSums() {
     if (0 === counts[mean_index]) {
       sums[mean_index] = means[mean_index];
       for (let dimension in dataExtremes) {
-        sums[mean_index][dimension] = dataExtremes[dimension].min + ( Math.random() * dataRange[dimension] );
+        sums[mean_index][dimension] = dataExtremes[dimension].minimum + ( Math.random() * dataRange[dimension] );
       }
       continue;
     }
@@ -135,8 +131,8 @@ function calculateSums() {
   }
 }
 
-function preprocess(featureALabel, featureBLabel, input) {
-  for (item in input) {
+let preprocess = (featureALabel, featureBLabel, input) => {
+  for (let item in input) {
     let array = [];
     array.push(input[item][featureALabel]);
     array.push(input[item][featureBLabel]);
@@ -144,7 +140,7 @@ function preprocess(featureALabel, featureBLabel, input) {
   }
 }
 
-function run() {
+let run = () => {
   let moved = updateMeans();
   if (moved){
     run();
@@ -164,3 +160,12 @@ function run() {
 }
 
 module.exports = kMeansClustering;
+module.exports.getDataRanges = getDataRanges;
+module.exports.getDataExtremes = getDataExtremes;
+module.exports.normalise = normalise;
+module.exports.initialise = initialise;
+module.exports.assignToClusters = assignToClusters;
+module.exports.updateMeans = updateMeans;
+module.exports.calculateSums = calculateSums;
+module.exports.preprocess = preprocess;
+module.exports.run = run;

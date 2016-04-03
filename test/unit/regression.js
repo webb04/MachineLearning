@@ -1,7 +1,7 @@
 var expect = require("chai").expect;
 
 describe("Regression", function() {
-  it("Calculates for perfect positive correlation", function() {
+  it("Calculates perfect positive correlation", function() {
     var x = [1,2,3,4,5];
     var y = [1,2,3,4,5];
     var leastSquares = require("../leastSquares")(x, y);
@@ -13,7 +13,7 @@ describe("Regression", function() {
     expect(rSquare).to.equal(0);
   });
 
-  it("Calculates for perfect negative correlation", function() {
+  it("Calculates perfect negative correlation", function() {
     var x = [-1,-2,-3,-4,-5];
     var y = [1,2,3,4,5];
     var leastSquares = require("../leastSquares")(x, y);
@@ -25,7 +25,7 @@ describe("Regression", function() {
     expect(rSquare).to.equal(0);
   });
 
-  it("Calculates for positive correlation", function() {
+  it("Calculates positive correlation", function() {
     var x = [1,2,3,4,5];
     var y = [3,7,9,6,54];
     var leastSquares = require("../leastSquares")(x, y);
@@ -35,7 +35,7 @@ describe("Regression", function() {
     expect(Intercept).to.be.closeTo(-14.4999, 0.005);
   });
 
-  it("Calculates for negative correlation", function() {
+  it("Calculates negative correlation", function() {
     var x = [-10,-23,-26,-34,-55];
     var y = [13,17,19,26,44];
     var leastSquares = require("../leastSquares")(x, y);

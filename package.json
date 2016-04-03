@@ -22,8 +22,10 @@
     "request": "^2.69.0"
   },
   "devDependencies": {
-    "babel": "^6.5.2",
-    "babel-preset-es2015": "^6.1.18",
+    "babel": "6.3.13",
+    "babel-core": "6.1.18",
+    "babel-preset-es2015": "6.3.13",
+    "mocha": "2.3.4",
     "babelify": "^7.2.0",
     "browserify": "^12.0.1",
     "chai": "^3.5.0",
@@ -32,7 +34,6 @@
     "gulp-browserify": "~0.5.0",
     "gulp-concat": "~2.4.1",
     "gulp-sourcemaps": "^1.6.0",
-    "mocha": "^2.4.5",
     "react-tools": "^0.12.0",
     "reactify": "0.15.2",
     "vinyl-buffer": "^1.0.0",

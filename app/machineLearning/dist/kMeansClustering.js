@@ -35,56 +35,51 @@ var kMeansClustering = {
   }
 };
 
-function getDataRanges(extremes) {
+var getDataRanges = function getDataRanges(extremes) {
   var ranges = extremes.map(function (range) {
-    return range.max - range.min;
+    return range.maximum - range.minimum;
   });
   return ranges;
-}
+};
 
-function getDataExtremes(points) {
+var getDataExtremes = function getDataExtremes(data) {
   var extremes = [];
   for (var i in data) {
     var point = data[i];
     for (var dimension in point) {
-      switch (true) {
-        case !extremes[dimension]:
-          extremes[dimension] = { min: 2000, max: 0 };
-        case point[dimension] < extremes[dimension].min:
-          extremes[dimension].min = point[dimension];
-        case point[dimension] > extremes[dimension].max:
-          extremes[dimension].max = point[dimension];
-          break;
-      }
+      extremes[dimension] = !extremes[dimension] ? { minimum: 1000000, maximum: 0 } : extremes[dimension];
+      extremes[dimension].minimum = point[dimension] < extremes[dimension].minimum ? point[dimension] : extremes[dimension].minimum;
+      extremes[dimension].maximum = point[dimension] > extremes[dimension].maximum ? point[dimension] : extremes[dimension].maximum;
     }
   }
   return extremes;
-}
+};
 
-function normalise(data) {
+var normalise = function normalise(data) {
   for (var i in data) {
     var point = data[i];
     for (var dimension in point) {
-      data[i][dimension] = point[dimension] / dataExtremes[dimension].max;
+      data[i][dimension] = point[dimension] / dataExtremes[dimension].maximum;
     }
   }
   return data;
-}
+};
 
-function initialise() {
+var initialise = function initialise() {
   var k = arguments.length <= 0 || arguments[0] === undefined ? 3 : arguments[0];
 
-  while (k--) {
+  while (k > 0) {
     var mean = [];
     for (var dimension in dataExtremes) {
-      mean[dimension] = dataExtremes[dimension].min + Math.random() * dataRange[dimension];
+      mean[dimension] = dataExtremes[dimension].minimum + Math.random() * dataRange[dimension];
     }
     means.push(mean);
+    k--;
   }
   return means;
 };
 
-function assignToClusters() {
+var assignToClusters = function assignToClusters() {
   for (var i in data) {
     var point = data[i];
     var distances = [];
@@ -100,23 +95,20 @@ function assignToClusters() {
     }
     assignments[i] = distances.indexOf(Math.min.apply(null, distances));
   }
-}
+};
 
-function updateMeans() {
+var updateMeans = function updateMeans() {
   assignToClusters();
-  sums = Array(means.length);
-  counts = Array(means.length);
-  // let moved = false;
+  var moved = false;
   calculateSums();
-  var moved = sums.toString() !== means.toString() ? true : false;
-  // if () {
-  //   moved = true;
-  // }
+  if (means.toString() !== sums.toString()) {
+    moved = true;
+  }
   means = sums;
   return moved;
-}
+};
 
-function calculateSums() {
+var calculateSums = function calculateSums() {
   for (var j in means) {
     counts[j] = 0;
     sums[j] = Array(means[j].length);
@@ -137,7 +129,7 @@ function calculateSums() {
     if (0 === counts[_mean_index]) {
       sums[_mean_index] = means[_mean_index];
       for (var _dimension2 in dataExtremes) {
-        sums[_mean_index][_dimension2] = dataExtremes[_dimension2].min + Math.random() * dataRange[_dimension2];
+        sums[_mean_index][_dimension2] = dataExtremes[_dimension2].minimum + Math.random() * dataRange[_dimension2];
       }
       continue;
     }
@@ -145,18 +137,18 @@ function calculateSums() {
       sums[_mean_index][_dimension3] /= counts[_mean_index];
     }
   }
-}
+};
 
-function preprocess(featureALabel, featureBLabel, input) {
-  for (item in input) {
+var preprocess = function preprocess(featureALabel, featureBLabel, input) {
+  for (var _item in input) {
     var array = [];
-    array.push(input[item][featureALabel]);
-    array.push(input[item][featureBLabel]);
+    array.push(input[_item][featureALabel]);
+    array.push(input[_item][featureBLabel]);
     data.push(array);
   }
-}
+};
 
-function run() {
+var run = function run() {
   var moved = updateMeans();
   if (moved) {
     run();
@@ -173,6 +165,15 @@ function run() {
     data = [];
     input = {};
   }
-}
+};
 
 module.exports = kMeansClustering;
+module.exports.getDataRanges = getDataRanges;
+module.exports.getDataExtremes = getDataExtremes;
+module.exports.normalise = normalise;
+module.exports.initialise = initialise;
+module.exports.assignToClusters = assignToClusters;
+module.exports.updateMeans = updateMeans;
+module.exports.calculateSums = calculateSums;
+module.exports.preprocess = preprocess;
+module.exports.run = run;
