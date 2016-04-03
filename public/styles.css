@@ -25,6 +25,11 @@ html, body {
 	background: #fafafa;
 }
 
+input[type=number]::-webkit-inner-spin-button,  input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .modal .modal-footer .btn-flat {
     float: right;
     margin: 6px 0;

@@ -24,19 +24,7 @@ var featureA = { minimum: 81, maximum: 178 };
 var featureB = { minimum: 66, maximum: 76 };
 nodes.nodes[nodes.nodes.length-1].getEuclideanDistance(featureA, featureB);
 
-
-// var data = [[148,72],[85,66],[138,76],[102,76],[88,66]];
-// var dataExtremes =[ { min: 85, max: 148 }, { min: 66, max: 76 } ];
-
-// var extremes = kNearestNeighbours.getDataExtremes(data);
-// var ranges = kNearestNeighbours.getDataRanges(dataExtremes);
-
-
 describe("Classification", function() {
-  // measure distances
-  // extremes
-  // ranges
-
   // Distance measures are very important for instance-based algorithms like K-Nearest Neighbours and K-Means Clustering
   // To make a classification, the new node needs to correctly determine how far away each of it's neighbours are
   // and then be able to deterin the k closest

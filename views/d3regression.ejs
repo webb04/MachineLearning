@@ -8,7 +8,7 @@
   <h5 id="model-title" class="ols-title"><%- title %></h5>
   <div class="ols-inner-container">
     <div style="text-align: center;">
-      <input type="text" placeholder="Cache" id="x-value">
+      <input type="number" placeholder="Cache" id="x-value">
     </div>
     <div class="ols-prediction" id="y-value">0</div>
   </div>
@@ -22,6 +22,8 @@
     var data = <%- data %>
     var featureALabel = <%- JSON.stringify(featureALabel) %>
     var featureBLabel = <%- JSON.stringify(featureBLabel) %>
+    window.featureALabel = featureALabel;
+    window.featureBLabel = featureBLabel;
 
     for (item in data) {
       data[item].id = "Training";
@@ -227,15 +229,18 @@
   $(document).ready(function() {
     $('select').material_select();
     $('#react-main-mount').css('padding', '0%');
+    $('div').find(".ols-inner-container input[type=number]").attr("placeholder", window.featureALabel.toString());
   });
   var inputX = 0;
   $("#x-value").keyup(function() {
     inputX = $("#x-value").val();
-    outputY = leastSquaresCoeff[1] + (leastSquaresCoeff[0] * inputX);
-    outputY = outputY.toFixed(2);
-    console.log(inputX);
-    console.log(outputY);
-    $('#y-value').text(outputY);
+    if (!inputX) {
+      $('#y-value').text(window.featureBLabel.toString());
+    } else {
+      outputY = leastSquaresCoeff[1] + (leastSquaresCoeff[0] * inputX);
+      outputY = outputY.toFixed(2);
+      $('#y-value').text(outputY);
+    }
   });
 </script>
 

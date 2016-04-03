@@ -5,28 +5,28 @@
 
   <testsuite name="knnTest"
     errors="0" failures="0" hostname="" id="" package="knnTest" skipped="0"
-    tests="4" time="6.704" timestamp="Fri, 01 Apr 2016 14:06:03 GMT">
+    tests="4" time="7.538" timestamp="Sun, 03 Apr 2016 18:59:25 GMT">
   
-    <testcase name="knn shows on homepage" time="1.935" assertions="2">
+    <testcase name="knn shows on homepage" time="1.762" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="knn link works on homepage" time="0.2370" assertions="2">
+    <testcase name="knn link works on homepage" time="0.2630" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="knn form validation works" time="2.401" assertions="1">
+    <testcase name="knn form validation works" time="2.894" assertions="1">
 
     
     </testcase>
   
-    <testcase name="knn visualisation is shown" time="2.131" assertions="2">
+    <testcase name="knn visualisation is shown" time="2.619" assertions="2">
 
     
 

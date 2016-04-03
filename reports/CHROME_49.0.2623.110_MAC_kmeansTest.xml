@@ -5,28 +5,28 @@
 
   <testsuite name="kmeansTest"
     errors="0" failures="0" hostname="" id="" package="kmeansTest" skipped="0"
-    tests="4" time="11.98" timestamp="Fri, 01 Apr 2016 14:05:51 GMT">
+    tests="4" time="9.686" timestamp="Sun, 03 Apr 2016 18:59:15 GMT">
   
-    <testcase name="kmeans shows on homepage" time="1.703" assertions="2">
+    <testcase name="kmeans shows on homepage" time="1.967" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="kmeans link works on homepage" time="0.2520" assertions="2">
+    <testcase name="kmeans link works on homepage" time="0.3050" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="kmeans form validation works" time="7.228" assertions="1">
+    <testcase name="kmeans form validation works" time="4.710" assertions="1">
 
     
     </testcase>
   
-    <testcase name="kmeans visualisation is shown" time="2.796" assertions="2">
+    <testcase name="kmeans visualisation is shown" time="2.704" assertions="2">
 
     
 

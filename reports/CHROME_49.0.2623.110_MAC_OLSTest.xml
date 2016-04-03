@@ -5,35 +5,41 @@
 
   <testsuite name="OLSTest"
     errors="0" failures="0" hostname="" id="" package="OLSTest" skipped="0"
-    tests="5" time="9.172" timestamp="Fri, 01 Apr 2016 14:05:42 GMT">
+    tests="5" time="9.965" timestamp="Sun, 03 Apr 2016 18:59:05 GMT">
   
-    <testcase name="ols shows on homepage" time="4.125" assertions="2">
+    <testcase name="ols shows on homepage" time="2.584" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="ols link works on homepage" time="0.2540" assertions="2">
+    <testcase name="ols link works on homepage" time="0.3870" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="ols form validation works" time="2.654" assertions="1">
+    <testcase name="ols form validation works" time="2.945" assertions="1">
 
     
     </testcase>
   
-    <testcase name="ols visualisation is shown" time="1.988" assertions="2">
+    <testcase name="ols visualisation is shown" time="2.018" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="ols input works" time="0.1510" assertions="0">
+    <testcase name="ols input works" time="2.031" assertions="3">
+
+    
+
+    
+
+    
     </testcase>
   
   
