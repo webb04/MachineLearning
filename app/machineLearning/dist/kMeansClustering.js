@@ -28,7 +28,7 @@ var kMeansClustering = {
     data = normalise(data);
     dataExtremes = getDataExtremes(data);
     dataRange = getDataRanges(dataExtremes);
-    means = initialise(3);
+    means = initialise(2);
     assignToClusters();
     run();
     return targets;
