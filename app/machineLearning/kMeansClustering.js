@@ -2,31 +2,38 @@ let means = [];
 let assignments = [];
 let data = [];
 let input = {};
-let output;
 let targets = [];
 let dataExtremes = [];
 let dataRange = [];
 let sums = [];
 let counts = [];
+let clusters = null;
 
 let kMeansClustering = {
-  setup: function(inputData, featureA, featureB, featureALabel, featureBLabel) {
+  setup: function(inputData, featureA, featureB, featureALabel, featureBLabel, numberOfClusters) {
+    input = {};
     input = inputData;
     means = [];
     assignments = [];
     data = [];
-    output = 0;
     targets = [];
     dataExtremes = [];
     dataRange = [];
     let sums = [];
     let counts = [];
+    clusters = null;
     preprocess(featureALabel, featureBLabel, input);
     dataExtremes = getDataExtremes(data);
     data = normalise(data);
     dataExtremes = getDataExtremes(data);
     dataRange = getDataRanges(dataExtremes);
-    means = initialise(2);
+
+    console.log(typeof numberOfClusters);
+    clusters = parseInt(numberOfClusters);
+    console.log(typeof clusters);
+    console.log(clusters);
+
+    means = initialise(clusters);
     assignToClusters();
     run();
     return targets;
@@ -61,14 +68,16 @@ let normalise = (data) => {
   return data;
 }
 
-let initialise = (k=3) => {
-  while (k > 0) {
+let initialise = (clusterCentroids) => {
+  console.log(clusterCentroids);
+  while (clusterCentroids > 0) {
     let mean = [];
     for (let dimension in dataExtremes) {
       mean[dimension] = dataExtremes[dimension].minimum + ( Math.random() * dataRange[dimension] );
     }
+    console.log(means);
     means.push(mean);
-    k--;
+    clusterCentroids--;
   }
   return means;
 };
@@ -151,11 +160,15 @@ let run = () => {
       targets.push(assignments[i]);
       i++;
     }
-    output = input;
+    let dataRange = [];
+    dataExtremes = [];
     means = [];
     assignments = [];
     data = [];
     input = {};
+    clusters = null;
+    sums = [];
+    counts = [];
   }
 }
 

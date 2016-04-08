@@ -1,34 +1,43 @@
 "use strict";
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 var means = [];
 var assignments = [];
 var data = [];
 var input = {};
-var output = void 0;
 var targets = [];
 var dataExtremes = [];
 var dataRange = [];
 var sums = [];
 var counts = [];
+var clusters = null;
 
 var kMeansClustering = {
-  setup: function setup(inputData, featureA, featureB, featureALabel, featureBLabel) {
+  setup: function setup(inputData, featureA, featureB, featureALabel, featureBLabel, numberOfClusters) {
+    input = {};
     input = inputData;
     means = [];
     assignments = [];
     data = [];
-    output = 0;
     targets = [];
     dataExtremes = [];
     dataRange = [];
     var sums = [];
     var counts = [];
+    clusters = null;
     preprocess(featureALabel, featureBLabel, input);
     dataExtremes = getDataExtremes(data);
     data = normalise(data);
     dataExtremes = getDataExtremes(data);
     dataRange = getDataRanges(dataExtremes);
-    means = initialise(2);
+
+    console.log(typeof numberOfClusters === "undefined" ? "undefined" : _typeof(numberOfClusters));
+    clusters = parseInt(numberOfClusters);
+    console.log(typeof clusters === "undefined" ? "undefined" : _typeof(clusters));
+    console.log(clusters);
+
+    means = initialise(clusters);
     assignToClusters();
     run();
     return targets;
@@ -65,16 +74,16 @@ var normalise = function normalise(data) {
   return data;
 };
 
-var initialise = function initialise() {
-  var k = arguments.length <= 0 || arguments[0] === undefined ? 3 : arguments[0];
-
-  while (k > 0) {
+var initialise = function initialise(clusterCentroids) {
+  console.log(clusterCentroids);
+  while (clusterCentroids > 0) {
     var mean = [];
     for (var dimension in dataExtremes) {
       mean[dimension] = dataExtremes[dimension].minimum + Math.random() * dataRange[dimension];
     }
+    console.log(means);
     means.push(mean);
-    k--;
+    clusterCentroids--;
   }
   return means;
 };
@@ -159,11 +168,15 @@ var run = function run() {
       targets.push(assignments[i]);
       i++;
     }
-    output = input;
+    var _dataRange = [];
+    dataExtremes = [];
     means = [];
     assignments = [];
     data = [];
     input = {};
+    clusters = null;
+    sums = [];
+    counts = [];
   }
 };
 

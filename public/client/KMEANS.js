@@ -58,6 +58,20 @@ var Form = React.createClass({
          </div>
 
           <form action="/submit" method="post">
+
+            <div className="row selectK">
+              <div class="input-field col s12">
+                <select id="numberOfClusters" name="numberOfClusters">
+                  <option value="0" disabled>Number of clusters</option>
+                  <option value="2">2</option>
+                  <option value="3" selected>3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <label>Number of clusters</label>
+              </div>
+            </div>
+
            <div className="row">
              <div className="input-field col s12">
                <div className="hidden">

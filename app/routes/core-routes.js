@@ -46,6 +46,7 @@ module.exports = function(app) {
 		var featureB = req.body.featureB || null;
 		var featureALabel;
 		var featureBLabel;
+		var numberOfClusters = req.body.numberOfClusters;
 
 		var data = JSON.parse(inputData.toString().trim());
 		var i = 0;
@@ -58,7 +59,7 @@ module.exports = function(app) {
 		switch (algorithm) {
 	    case 'KMEANS':
 					var targets = [];
-					targets = kMeansClustering.setup(data, featureA, featureB, featureALabel, featureBLabel);
+					targets = kMeansClustering.setup(data, featureA, featureB, featureALabel, featureBLabel, numberOfClusters);
 					res.render('d3kmeans.ejs', {targets: targets, data: req.body.inputData,
 					featureA: featureA, featureB: featureB, featureALabel: featureALabel,
 					featureBLabel: featureBLabel});
