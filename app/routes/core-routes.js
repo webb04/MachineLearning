@@ -46,7 +46,8 @@ module.exports = function(app) {
 		var featureB = req.body.featureB || null;
 		var featureALabel;
 		var featureBLabel;
-		var numberOfClusters = req.body.numberOfClusters;
+		var numberOfClusters = req.body.numberOfClusters || null;
+		var numberOfNeighbours = req.body.numberOfNeighbours || null;
 
 		var data = JSON.parse(inputData.toString().trim());
 		var i = 0;
@@ -65,7 +66,7 @@ module.exports = function(app) {
 					featureBLabel: featureBLabel});
 	        break;
 	    case 'KNN':
-					types = kNearestNeighbours.run(data, featureA, featureB);
+					types = kNearestNeighbours.run(data, featureA, featureB, numberOfNeighbours);
 					res.render('d3knn.ejs', {reactOutput: types, data: req.body.inputData,
 					featureA: featureA, featureB: featureB, featureALabel: featureALabel,
 					featureBLabel: featureBLabel});

@@ -5,8 +5,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var kNearestNeighbours = {
-  run: function run(data, featureA, featureB) {
-    var nodes = new NodeList(3);
+  run: function run(data, featureA, featureB, numberOfNeighbours) {
+    var neighbours = parseInt(numberOfNeighbours);
+    var nodes = new NodeList(neighbours);
     for (var i in data) {
       var newNode = {};
       var array = [];

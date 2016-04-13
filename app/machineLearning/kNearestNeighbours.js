@@ -1,6 +1,7 @@
 let kNearestNeighbours = {
-  run: function(data, featureA, featureB) {
-    let nodes = new NodeList(3);
+  run: function(data, featureA, featureB, numberOfNeighbours) {
+    let neighbours = parseInt(numberOfNeighbours);
+    let nodes = new NodeList(neighbours);
     for (let i in data) {
       let newNode = {};
       let array = [];
