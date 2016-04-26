@@ -32,7 +32,6 @@ let kNearestNeighbours = {
         var prediction = nodes.nodes[i].predict(nodes.k);
       }
     }
-
     return prediction;
   }
 };
@@ -122,5 +121,3 @@ class NodeList {
 module.exports = kNearestNeighbours;
 module.exports.Node = Node;
 module.exports.NodeList = NodeList;
-// global.Node = Node;
-// global.NodeList = NodeList;

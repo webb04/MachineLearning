@@ -44,8 +44,7 @@ module.exports = function(app) {
 		var inputData = req.body.inputData;
 		var featureA = req.body.featureA || null;
 		var featureB = req.body.featureB || null;
-		var featureALabel;
-		var featureBLabel;
+		var featureALabel, featureBLabel;
 		var numberOfClusters = req.body.numberOfClusters || null;
 		var numberOfNeighbours = req.body.numberOfNeighbours || null;
 
@@ -60,7 +59,8 @@ module.exports = function(app) {
 		switch (algorithm) {
 	    case 'KMEANS':
 					var targets = [];
-					targets = kMeansClustering.setup(data, featureA, featureB, featureALabel, featureBLabel, numberOfClusters);
+					targets = kMeansClustering.setup(data, featureA, featureB, featureALabel,
+						featureBLabel, numberOfClusters);
 					res.render('d3kmeans.ejs', {targets: targets, data: req.body.inputData,
 					featureA: featureA, featureB: featureB, featureALabel: featureALabel,
 					featureBLabel: featureBLabel});
@@ -79,5 +79,6 @@ module.exports = function(app) {
 					featureBLabel: featureBLabel});
 					break;
 		}
+		
 	});
 };

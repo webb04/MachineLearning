@@ -99,7 +99,6 @@ var Form = React.createClass({
                <p className="errorMessage">{featureB}</p>
              </div>
 
-
              <div className="row shiftRight">
                { this.state.showSubmitButton ? <input className="btn waves-effect waves-light" type="submit" value="Submit"/> : null }
              </div>

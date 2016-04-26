@@ -27,12 +27,7 @@ let kMeansClustering = {
     data = normalise(data);
     dataExtremes = getDataExtremes(data);
     dataRange = getDataRanges(dataExtremes);
-
-    console.log(typeof numberOfClusters);
     clusters = parseInt(numberOfClusters);
-    console.log(typeof clusters);
-    console.log(clusters);
-
     means = initialise(clusters);
     assignToClusters();
     run();
