@@ -1,21 +1,16 @@
 <% include nav.ejs %>
-
-<div class="statusTracker">
-  <h6>1. Select</h6>
-  <h6 class="unselected">2. Train</h6>
-  <h6 class="unselected">3. Predict</h6>
-</div>
-<div class="progress updated">
-  <div class="determinate select" style="width: 33.333333333333333%"></div>
-</div>
-
-    <div id="react-AlgorithmSelect-mount">
-      <%- AlgorithmSelect %>
-    </div>
-
-	<!-- comment out main.js to see server side only rendering -->
-	<script src="/main.js"></script>
-  <!--Import jQuery before materialize.js-->
+  <div class="statusTracker">
+    <h6>1. Select</h6>
+    <h6 class="unselected">2. Train</h6>
+    <h6 class="unselected">3. Predict</h6>
+  </div>
+  <div class="progress updated">
+    <div class="determinate select" style="width: 33.333333333333333%"></div>
+  </div>
+  <div id="react-AlgorithmSelect-mount">
+    <%- AlgorithmSelect %>
+  </div>
+  <script src="/main.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
   <script>
@@ -23,6 +18,5 @@
       $('select').material_select();
     });
   </script>
-
 </body>
 </html>

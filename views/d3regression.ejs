@@ -231,7 +231,9 @@
     $('#react-main-mount').css('padding', '0%');
     $('div').find(".ols-inner-container input[type=number]").attr("placeholder", window.featureALabel.toString());
   });
+
   var inputX = 0;
+
   $("#x-value").keyup(function() {
     inputX = $("#x-value").val();
     if (!inputX) {
@@ -242,6 +244,7 @@
       $('#y-value').text(outputY);
     }
   });
+  
 </script>
 
 </body>

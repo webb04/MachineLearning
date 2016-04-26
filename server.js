@@ -4,24 +4,24 @@ app = express(),
 port = 4444,
 bodyParser = require('body-parser');
 
-// Make sure to include the JSX transpiler
 require('node-jsx').install();
 
-// Include static assets. Not advised for production
+// Include static assets
 app.use(express.static(path.join(__dirname, 'public')));
 // Set view path
 app.set('views', path.join(__dirname, 'views'));
+// Use EJS template engine
 app.set('view engine', 'ejs');
 
-// support json encoded bodies
+// Support JSON encoded bodies
 app.use(bodyParser.json());
-// support encoded bodies
+// Support encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Set up Routes for the application
+// Set up routes
 require('./app/routes/core-routes.js')(app);
 
-//Route not found -- Set 404
+//Route not found - Set 404
 app.get('*', function(req, res) {
     res.json({
         'route': 'Sorry this page does not exist!'
