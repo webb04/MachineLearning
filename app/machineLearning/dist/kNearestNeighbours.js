@@ -16,7 +16,7 @@ var kNearestNeighbours = {
       }
       newNode.featureA = array[0];
       newNode.featureB = array[1];
-      newNode.type = array[2];
+      newNode.type = array[2].toString();
       nodes.add(new Node(newNode));
     }
     featureA = parseInt(featureA);
@@ -38,7 +38,6 @@ var kNearestNeighbours = {
         var prediction = nodes.nodes[_i].predict(nodes.k);
       }
     }
-
     return prediction;
   }
 };
@@ -150,5 +149,3 @@ var NodeList = function () {
 module.exports = kNearestNeighbours;
 module.exports.Node = Node;
 module.exports.NodeList = NodeList;
-// global.Node = Node;
-// global.NodeList = NodeList;

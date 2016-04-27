@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="4">
+
+  <testsuite name="kmeansTest"
+    errors="0" failures="0" hostname="" id="" package="kmeansTest" skipped="0"
+    tests="4" time="8.949" timestamp="Tue, 26 Apr 2016 00:44:30 GMT">
+  
+    <testcase name="kmeans shows on homepage" time="1.900" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="kmeans link works on homepage" time="0.2990" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="kmeans form validation works" time="4.008" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="kmeans visualisation is shown" time="2.742" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+  
+  </testsuite>
+</testsuites>

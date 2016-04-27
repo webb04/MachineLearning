@@ -1,7 +1,5 @@
 "use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
 var means = [];
 var assignments = [];
 var data = [];
@@ -31,12 +29,7 @@ var kMeansClustering = {
     data = normalise(data);
     dataExtremes = getDataExtremes(data);
     dataRange = getDataRanges(dataExtremes);
-
-    console.log(typeof numberOfClusters === "undefined" ? "undefined" : _typeof(numberOfClusters));
     clusters = parseInt(numberOfClusters);
-    console.log(typeof clusters === "undefined" ? "undefined" : _typeof(clusters));
-    console.log(clusters);
-
     means = initialise(clusters);
     assignToClusters();
     run();

@@ -10,7 +10,7 @@ let kNearestNeighbours = {
       }
       newNode.featureA = array[0];
       newNode.featureB = array[1];
-      newNode.type = array[2];
+      newNode.type = array[2].toString();
       nodes.add(new Node(newNode));
     }
     featureA = parseInt(featureA);

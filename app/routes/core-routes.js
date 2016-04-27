@@ -79,6 +79,6 @@ module.exports = function(app) {
 					featureBLabel: featureBLabel});
 					break;
 		}
-		
+
 	});
 };
