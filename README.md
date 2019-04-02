@@ -1,4 +1,4 @@
-# machine-learning
+# MachineLearning
 Machine Learning in JavaScript
 
 - `git clone` this repo
