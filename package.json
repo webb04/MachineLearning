@@ -10,7 +10,7 @@
     "body-parser": "~1.0.0",
     "chai": "^3.5.0",
     "cookie-parser": "~1.0.0",
-    "ejs": "~0.8.5",
+    "ejs": "~2.7.2",
     "express": "~4.0.0",
     "griddle-react": "^0.1.19",
     "jasmine-node": "^1.14.5",
