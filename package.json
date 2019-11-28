@@ -11,7 +11,7 @@
     "chai": "^3.5.0",
     "cookie-parser": "~1.0.0",
     "ejs": "~2.7.2",
-    "express": "~4.0.0",
+    "express": "~4.17.1",
     "griddle-react": "^0.1.19",
     "jasmine-node": "^1.14.5",
     "mocha": "^2.4.5",
